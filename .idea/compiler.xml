@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="config" />
+        <module name="eureka-server" />
+        <module name="gameley-auth" />
+        <module name="gameley-common" />
+        <module name="gameley-generator" />
+        <module name="gateway-service" />
+        <module name="user-service" />
+        <module name="zipkin-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="adplatform" target="1.8" />
+      <module name="config" target="1.8" />
+      <module name="eureka-server" target="1.8" />
+      <module name="gameley-auth" target="1.8" />
+      <module name="gameley-common" target="1.7" />
+      <module name="gameley-generator" target="1.7" />
+      <module name="gateway-service" target="1.8" />
+      <module name="user-service" target="1.8" />
+      <module name="zipkin-server" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

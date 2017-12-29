@@ -1,0 +1,46 @@
+
+
+server:
+  port: 8040
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+#spring:
+#  rabbitmq:
+#    boot:
+#      admin:
+#        notify:
+#          mail:
+#            to:
+#            from:
+#
+#  mail:
+#    host: smtp.qq.com
+#    username: 1304489315@qq.com
+#    password:
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#            required: true
+
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: root
+    password: 123456
+
+
+
+
+
+

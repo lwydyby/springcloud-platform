@@ -1,0 +1,20 @@
+package ${package}.service.impl;
+
+import ${package}.entity.${className};
+import ${package}.dao.${className}Dao;
+import ${package}.service.${className}Service;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
+
+/**
+ * <p>
+ * $!{comments} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${datetime}
+ */
+@Service
+public class ${className}ServiceImpl extends ServiceImpl<${className}Dao, ${className}> implements ${className}Service  {
+	
+}
