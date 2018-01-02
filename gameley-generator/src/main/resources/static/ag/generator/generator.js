@@ -102,4 +102,9 @@ layui.use(['form', 'layedit', 'laydate'], function () {
             location.href = "/base/generator/code?tables=" + JSON.stringify(tableNames);
         }
     });
+    $('#menu_generate').on('click',function(){
+
+        location.href = "/menu/generator" ;
+
+    });
 });

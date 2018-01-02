@@ -178,7 +178,7 @@ public class GeneratorUtils {
         }
 
         if (template.contains("service.java.vm")) {
-            return packagePath + "service" + File.separator + className + "service.java";
+            return packagePath + "service" + File.separator + className + "Service.java";
         }
         if (template.contains("mapper.java.vm")) {
             return packagePath + "dao" + File.separator + className + "Dao.java";
@@ -190,7 +190,7 @@ public class GeneratorUtils {
             return packagePath + "controller" + File.separator + className + "Controller.java";
         }
         if (template.contains("serviceImpl.java.vm")) {
-            return packagePath + "service" + File.separator +"impl"+File.separator+ className + "serviceImpl.java";
+            return packagePath + "service" + File.separator +"impl"+File.separator+ className + "ServiceImpl.java";
         }
         if (template.contains("mapper.xml.vm")) {
             return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + className + "Mapper.xml";

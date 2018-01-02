@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.service.IService;
  * @author ${author}
  * @since ${datetime}
  */
-public interface $${className}Service extends  IService<${className}> {
+public interface ${className}Service extends  IService<${className}> {
 	
 }

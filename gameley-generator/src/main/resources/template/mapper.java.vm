@@ -1,7 +1,7 @@
 package ${package}.dao;
 
 import ${package}.entity.${className};
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.gameley.common.mapper.SuperMapper;
 
 /**
  *
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @email ${email}
  * @date ${datetime}
  */
-public interface ${className}Dao extends BaseMapper<${className}> {
+public interface ${className}Dao extends SuperMapper<${className}> {
 
 }

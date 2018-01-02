@@ -4,7 +4,12 @@ package ${package}.entity;
 import java.io.Serializable;
 
 import com.baomidou.mybatisplus.annotations.Version;
-
+import java.util.Date;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.enums.IdType;
+import ${package}.entity.${className};
 //import lombok.Data;
 
 
@@ -17,34 +22,38 @@ import com.baomidou.mybatisplus.annotations.Version;
  * @date ${datetime}
  */
 //@Data
-@Table(name = "${tableName}")
-public class ${className} implements Serializable {
-private static final long serialVersionUID = 1L;
-
+@TableName("${tableName}")
+public class ${className} extends Model<${className}> {
+	private static final long serialVersionUID=1L;
 	#foreach ($column in $columns)
-		#if($column.columnName == $pk.columnName)
-        //$column.comments
-        @Id
-        private $column.attrType $column.attrname;
-		#else
-        //$column.comments
-        @Column(name = "$column.columnName")
-        private $column.attrType $column.attrname;
-		#end
+	#if($column.columnName == $pk.columnName)
+    //$column.comments
+    @TableId(value="id", type= IdType.AUTO)
+    private $column.attrType $column.attrname;
+	#else
+    //$column.comments
+    @TableField("$column.columnName")
+    private $column.attrType $column.attrname;
+	#end
 
 	#end
 
 	#foreach ($column in $columns)
-    /**
-     * 设置：${column.comments}
-     */
-    public void set${column.attrName}($column.attrType $column.attrname) {
-            this.$column.attrname = $column.attrname;
-            }
-    /**
-     * 获取：${column.comments}
-     */
-    public $column.attrType get${column.attrName}() {
-            return $column.attrname;
-            }
+	/**
+	 * 设置：${column.comments}
+	 */
+	public void set${column.attrName}($column.attrType $column.attrname) {
+			this.$column.attrname = $column.attrname;
+			}
+	/**
+	 * 获取：${column.comments}
+	 */
+	public $column.attrType get${column.attrName}() {
+			return $column.attrname;
+			}
 	#end
+	@Override
+	protected Serializable pkVal() {
+        return this.id;
+	}
+}

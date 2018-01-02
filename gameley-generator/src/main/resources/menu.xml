@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurations>
+    <menu>
+        <code>testmanager</code>   <!--英文名-->
+        <title>测试</title>        <!--中文名-->
+        <menuId>1</menuId>        <!--菜单id-->
+        <parentId>-1</parentId>   <!--父菜单id-->
+        <href>test</href>              <!--请求地址-->
+        <icon>file</icon>          <!--菜单图标 -->
+        <type>menu</type>          <!-- 类型（非menu类型生成菜单时忽略）-->
+        <path>/companent/</path>   <!-- 前台文件地址 （生成路由使用）-->
+        <description>123</description>  <!-- 菜单备注描述-->
+        <elements>                        <!-- 按钮权限生成-->
+            <element>
+                <code></code>
+                <type>button</type>
+                <name>新增</name>
+                <uri></uri>                    <!-- 请求地址 -->
+                <menuid></menuid>            <!-- 所属菜单id -->
+                <method>post</method>          <!-- 请求方式 -->
+            </element>
+        </elements>
+    </menu>
+
+
+
+</configurations>
