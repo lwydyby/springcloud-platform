@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2017年08月25日
  */
 @SpringBootApplication
-@MapperScan("com.github.wxiaoqi.security.generator.mapper")
+@MapperScan("com.gameley.generator.mapper")
 public class GeneratorBootstrap {
     public static void main(String[] args) {
         SpringApplication.run(GeneratorBootstrap.class, args);
