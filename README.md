@@ -6,6 +6,7 @@
 1. Spring Cloud
 1. Mybatis
 1. Mybatis-Plus
+1. Swagger2
 
  **项目介绍**
  
