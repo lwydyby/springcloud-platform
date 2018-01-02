@@ -14,4 +14,5 @@ import com.gameley.generator.entity.Menu;
  */
 public interface MenuDao extends SuperMapper<Menu> {
 
+    public int deleteall();
 }

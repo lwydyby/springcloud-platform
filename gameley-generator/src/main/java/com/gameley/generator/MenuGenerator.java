@@ -11,7 +11,9 @@ import org.dom4j.io.SAXReader;
 
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +34,8 @@ public class MenuGenerator {
            Element rootElement = document.getRootElement();
            //获取menu子节点信息
            List<Element> menulist = rootElement.elements("menu");
+           List<Menu> menus=new ArrayList<>();
+           List<com.gameley.generator.entity.Element> elementss=new ArrayList<>();
            for (Element item : menulist) {
                Menu menu = new Menu();
                menu.setCode(Optional.ofNullable(item.element("code").getTextTrim()).orElse(""));
@@ -43,7 +47,8 @@ public class MenuGenerator {
                menu.setType(Optional.ofNullable(item.element("type").getTextTrim()).orElse(""));
                menu.setPath(Optional.ofNullable(item.element("path").getTextTrim()).orElse(""));
                menu.setDescription(Optional.ofNullable(item.element("description").getTextTrim()).orElse(""));
-               menuService.insert(menu);
+               menus.add(menu);
+
                Element elements = item.element("elements");
                if (elements != null) {
                    List<Element> elementList = elements.elements("element");
@@ -55,11 +60,16 @@ public class MenuGenerator {
                        element.setUri(Optional.ofNullable(e.element("uri").getTextTrim()).orElse(""));
                        element.setMenuId(Optional.ofNullable(e.element("menuid").getTextTrim()).orElse(""));
                        element.setMethod(Optional.ofNullable(e.element("method").getTextTrim()).orElse(""));
-                       elementService.insert(element);
+                       elementss.add(element);
                    }
                }
 
            }
+           menuService.deleteAll();
+           elementService.deleteAll();
+           menuService.insertBatch(menus);
+           elementService.insertBatch(elementss);
+
 
 
        }catch (Exception e){

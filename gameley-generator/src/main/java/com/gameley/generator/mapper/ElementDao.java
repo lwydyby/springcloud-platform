@@ -13,5 +13,6 @@ import com.gameley.generator.entity.Element;
  * @date 2018-01-02 16:21:36
  */
 public interface ElementDao extends SuperMapper<Element> {
+    public int deleteAll();
 
 }

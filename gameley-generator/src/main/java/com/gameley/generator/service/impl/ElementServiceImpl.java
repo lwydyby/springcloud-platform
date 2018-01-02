@@ -6,6 +6,7 @@ import com.gameley.generator.entity.Element;
 
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.gameley.generator.service.ElementService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,5 +19,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ElementServiceImpl extends ServiceImpl<ElementDao, Element> implements ElementService {
-	
+    @Autowired
+    private ElementDao elementDao;
+    @Override
+    public int deleteAll() {
+        return elementDao.deleteAll();
+    }
 }

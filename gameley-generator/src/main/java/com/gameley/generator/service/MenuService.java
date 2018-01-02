@@ -13,5 +13,5 @@ import com.gameley.generator.entity.Menu;
  * @since 2018-01-02 16:21:35
  */
 public interface MenuService extends  IService<Menu> {
-	
+	public int deleteAll();
 }

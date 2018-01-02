@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * <p>
  *  前端控制器
@@ -30,7 +32,9 @@ public class MenuController {
     public String generator(){
         MenuGenerator menu=new MenuGenerator();
         menu.generator(menuService,elementService);
-        return "生成完毕";
+        return "写入成功";
+
+
     }
 	
 }

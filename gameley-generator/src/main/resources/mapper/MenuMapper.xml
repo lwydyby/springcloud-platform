@@ -32,6 +32,9 @@
             <result property="attr7" column="attr7"/>
             <result property="attr8" column="attr8"/>
 	</resultMap>
+    <delete id="deleteall">
+        DELETE FROM base_menu
+    </delete>
 
 
 </mapper>
