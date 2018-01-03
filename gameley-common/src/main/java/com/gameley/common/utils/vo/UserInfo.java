@@ -8,6 +8,15 @@ public class UserInfo {
     public String password;
     public String name;
     private String description;
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public Date getUpdTime() {
         return updTime;

@@ -37,7 +37,7 @@ spring:
 
 #mybatis
 mybatis-plus:
-  mapper-locations: classpath:mapping/*Dao.xml
+  mapper-locations: classpath:mapper/*Dao.xml
   #实体扫描，多个package用逗号或者分号分隔
   typeAliasesPackage: com.gameley.entity
   global-config:

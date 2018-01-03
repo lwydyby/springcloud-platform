@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.gameley.bean.Audience;
 import com.gameley.bean.JwtInfo;
 
+import com.gameley.common.constant.RestCodeConstants;
 import com.gameley.common.msg.auth.TokenErrorResponse;
 import com.gameley.utils.JwtHelper;
 import com.netflix.zuul.ZuulFilter;
@@ -51,6 +52,7 @@ public class loginfiler extends ZuulFilter {
         final String requesturi=request.getRequestURI().substring(zuulPrefix.length());
         String token=request.getHeader("token");
         //不进行拦截的地址
+        System.out.println(requesturi);
         if(isStartWith(requesturi)){
             return null;
         }
@@ -82,7 +84,7 @@ public class loginfiler extends ZuulFilter {
                 /**
                  * 暂不使用后台自动刷新，改为前端页面定时自动拉取刷新
                  */
-                setFailedRequest("token过期", 200);
+                setFailedRequest("token过期", RestCodeConstants.TOKEN_ERROR_CODE);
                 return null;
 
 //                String refreshToken=jwtInfo.getToken();
@@ -96,8 +98,8 @@ public class loginfiler extends ZuulFilter {
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("token错误");
-            setFailedRequest(JSON.toJSONString(new TokenErrorResponse(e.getMessage())), 200);
+
+            setFailedRequest(JSON.toJSONString(new TokenErrorResponse(e.getMessage())), RestCodeConstants.TOKEN_ERROR_CODE);
             return null;
         }
 

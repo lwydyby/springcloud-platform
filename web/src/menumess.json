@@ -1,0 +1,214 @@
+{
+  "menumess":[
+    {
+      "name":"统计分析",
+      "isroot": false,
+      "path": "",
+      "data": [
+        {
+          "name":"仪表盘",
+          "isroot": true,
+          "path": "",
+          "data": []
+        },
+        {
+          "name":"数据报表",
+          "isroot": true,
+          "path": "",
+          "data": []
+        }
+      ]
+    },
+    {
+      "name":"工作动态",
+      "isroot": true,
+      "path": "/workDynamic",
+      "data": []
+    },
+    {
+      "name":"销售运营",
+      "isroot": false,
+      "path": "",
+      "data": [
+        {
+          "name":"产品线索",
+          "isroot": true,
+          "path": "/saleOperation/saleChance",
+          "data": []
+        },
+        {
+          "name":"客户信息",
+          "isroot": true,
+          "path": "/saleOperation/customer",
+          "data": []
+        },
+        {
+          "name":"销售日报",
+          "isroot": true,
+          "path": "/saleOperation/saleDaily",
+          "data": []
+        },
+        {
+          "name":"拜访记录",
+          "isroot": true,
+          "path": "/saleOperation/saleVisit",
+          "data": []
+        },
+        {
+          "name":"产品信息",
+          "isroot": true,
+          "path": "/saleOperation/saleProduct",
+          "data": []
+        },
+        {
+          "name":"合同信息",
+          "isroot": true,
+          "path": "/saleOperation/Contract",
+          "data": []
+        },
+        {
+          "name":"执行单",
+          "isroot": true,
+          "path": "/saleOperation/saleImplemention",
+          "data": []
+        },
+        {
+          "name":"美术素材",
+          "isroot": true,
+          "path": "/saleOperation/fineArt",
+          "data": []
+        },
+        {
+          "name":"结算单",
+          "isroot": true,
+          "path": "/saleOperation/saleFinalStatement",
+          "data": []
+        },
+        {
+          "name":"收款记录",
+          "isroot": true,
+          "path": "",
+          "data": []
+        },
+        {
+          "name":"开票记录",
+          "isroot": true,
+          "path": "/saleOperation/BillInfo",
+          "data": []
+        }
+      ]
+    },
+    {
+      "name":"媒介管理",
+      "isroot": false,
+      "path": "",
+      "data": [
+        {
+          "name":"产品关联",
+          "isroot": true,
+          "path": "/mediaManage/productConnect",
+          "data": []
+        },
+        {
+          "name":"媒体信息",
+          "isroot": true,
+          "path": "/mediaManage/mediaInfo",
+          "data": []
+        },
+        {
+          "name":"合同信息",
+          "isroot": true,
+          "path": "/mediaManage/Contract",
+          "data": []
+        },
+        {
+          "name":"结算单信息",
+          "isroot": true,
+          "path": "/mediaManage/statement",
+          "data": []
+        },
+        {
+          "name":"打款申请信息",
+          "isroot": true,
+          "path": "/mediaManage/moneyInfo",
+          "data": []
+        },
+        {
+          "name":"收票信息",
+          "isroot": true,
+          "path": "/mediaManage/Invoice",
+          "data": []
+        }
+      ]
+    },
+    {
+      "name":"销售业绩",
+      "isroot": false,
+      "path": "",
+      "data": [
+        {
+          "name":"计划目标",
+          "isroot": true,
+          "path": "",
+          "data": []
+        },
+        {
+          "name":"销售流水",
+          "isroot": true,
+          "path": "",
+          "data": []
+        }
+      ]
+    },
+    {
+      "name":"日常流水",
+      "isroot": false,
+      "path": "",
+      "data": [
+        {
+          "name":"广告主消耗",
+          "isroot": true,
+          "path": "/dailyWater/Consume",
+          "data": []
+        },
+        {
+          "name":"媒体成本",
+          "isroot": true,
+          "path": "/dailyWater/mediaCost",
+          "data": []
+        },
+        {
+          "name":"执行单汇总",
+          "isroot": true,
+          "path": "",
+          "data": []
+        }
+      ]
+    },
+    {
+      "name":"系统管理",
+      "isroot": false,
+      "path": "",
+      "data": [
+        {
+          "name":"角色管理",
+          "isroot": true,
+          "path": "",
+          "data": []
+        },
+        {
+          "name":"用户/部门管理",
+          "isroot": true,
+          "path": "/Systemmanage/user",
+          "data": []
+        },
+        {
+          "name":"其他设置",
+          "isroot": true,
+          "path": "",
+          "data": []
+        }
+      ]
+    }
+  ]
+}

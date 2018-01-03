@@ -1,10 +1,15 @@
 package com.gameley.gameleyauth.utils;
 
+import com.gameley.common.utils.vo.UserInfo;
+import com.gameley.gameleyauth.bean.Audience;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import javafx.scene.chart.PieChart;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
@@ -15,7 +20,13 @@ import java.util.Date;
  * Created by m2m on 2017/3/27.
  *
  */
+@Component
+@EnableConfigurationProperties(Audience.class)
 public class JwtHelper {
+
+    @Autowired
+    private Audience audienceEntity;
+
     public static Claims parseJWT(String jsonWebToken,String base64Security){
         try {
             Claims claims = Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(base64Security))
@@ -37,7 +48,7 @@ public class JwtHelper {
 
         Key signingKey = new SecretKeySpec(apiKeySecretBytes,signatureAlgorithm.getJcaName());
         //添加构成JWT的参数
-        JwtBuilder builder = Jwts.builder().setHeaderParam("typ","JWT")
+        JwtBuilder builder = Jwts.builder().setHeaderParam("type","JWT")
                 .claim("unique_name",name)
                 .claim("userid",userId)
                 .setIssuer(issuer)
@@ -52,4 +63,23 @@ public class JwtHelper {
         //生成JWT
         return builder.compact();
     }
+    /**
+     * 获取jwt的payload部分
+     */
+    public  Claims getClaimFromToken(String token) {
+        return Jwts.parser()
+                .setSigningKey(DatatypeConverter.parseBase64Binary(audienceEntity.getBase64Secret()))
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
+    public UserInfo getUserInfo(String token){
+        Claims cl=getClaimFromToken(token);
+        UserInfo userInfo=new UserInfo();
+        userInfo.setName((String) cl.get("unique_name"));
+        userInfo.setId((String) cl.get("userid"));
+
+        return userInfo;
+    }
+
 }

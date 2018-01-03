@@ -1,5 +1,6 @@
 package com.gameley.generator.utils;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.gameley.generator.entity.ColumnEntity;
 import com.gameley.generator.entity.TableEntity;
 import org.apache.commons.configuration.Configuration;

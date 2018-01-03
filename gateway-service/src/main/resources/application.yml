@@ -27,6 +27,9 @@ zuul:
           path: /gameley-auth/**
           serviceId: gameley-auth
   prefix: /api #为zuul设置一个公共的前缀
+  host:
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
 
 gate:
   ignore:
@@ -43,3 +46,17 @@ jwt:
   secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=      #jwt秘钥
   expiration: 604800      #7天 单位:秒
   auth-path: auth         #认证请求的路径
+
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+

@@ -4,12 +4,14 @@ package com.gameley.generator.controller;
 import com.gameley.generator.MenuGenerator;
 import com.gameley.generator.service.ElementService;
 import com.gameley.generator.service.MenuService;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * <p>
@@ -29,10 +31,15 @@ public class MenuController {
     private ElementService elementService;
 
     @RequestMapping(value = "generator",method = RequestMethod.GET)
-    public String generator(){
+    public void generator(HttpServletResponse response) throws IOException {
         MenuGenerator menu=new MenuGenerator();
-        menu.generator(menuService,elementService);
-        return "写入成功";
+        byte[] data=menu.generator(menuService,elementService);
+        response.reset();
+        response.setHeader("Content-Disposition", "attachment; filename=\"webSetting.zip\"");
+        response.addHeader("Content-Length", "" + data.length);
+        response.setContentType("application/octet-stream; charset=UTF-8");
+        IOUtils.write(data, response.getOutputStream());
+
 
 
     }

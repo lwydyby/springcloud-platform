@@ -1,0 +1,15 @@
+.el-table {
+  color: #48576A;
+}
+
+.el-table__footer-wrapper thead div, .el-table__header-wrapper thead div {
+  color: #1F2D3D;
+}
+
+th {
+  font-weight: 600;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+}

@@ -1,23 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurations>
     <menu>
-        <code>testmanager</code>   <!--英文名-->
-        <title>测试</title>        <!--中文名-->
+        <code>systemManager</code>   <!--英文名-->
+        <title>系统管理</title>        <!--中文名-->
         <menuId>1</menuId>        <!--菜单id-->
         <parentId>-1</parentId>   <!--父菜单id-->
-        <href>test</href>              <!--请求地址-->
-        <icon>file</icon>          <!--菜单图标 -->
+        <href></href>              <!--请求地址-->
+        <icon>sys</icon>          <!--菜单图标 -->
         <type>menu</type>          <!-- 类型（非menu类型生成菜单时忽略）-->
-        <path>/companent/</path>   <!-- 前台文件地址 （生成路由使用）-->
-        <description>123</description>  <!-- 菜单备注描述-->
-        <elements>                        <!-- 按钮权限生成-->
+        <path></path>   <!-- 前台文件地址 （生成路由使用）-->
+        <description>一级菜单</description>  <!-- 菜单备注描述-->
+    </menu>
+    <menu>
+        <code>menuManager</code>
+        <title>菜单权限管理</title>
+        <menuId>2</menuId>
+        <parentId>1</parentId>
+        <href></href>
+        <icon>sys</icon>
+        <type>menu</type>
+        <path></path>
+        <description>子菜单</description>
+        <elements>
             <element>
-                <code></code>
+                <code>200</code>
                 <type>button</type>
-                <name>新增</name>
-                <uri></uri>                    <!-- 请求地址 -->
-                <menuid></menuid>            <!-- 所属菜单id -->
+                <name>getmenupermision</name>
+                <uri>/sys/getmenu</uri>                    <!-- 请求地址 -->
                 <method>post</method>          <!-- 请求方式 -->
+                <description>查询菜单</description>  <!-- 备注描述-->
+            </element>
+            <element>
+                <code>202</code>
+                <type>button</type>
+                <name>editmenupermision</name>
+                <uri>/sys/editmenu</uri>                    <!-- 请求地址 -->
+                <method>post</method>          <!-- 请求方式 -->
+                <description>编辑菜单</description>  <!-- 备注描述-->
+            </element>
+        </elements>
+    </menu>
+    <menu>
+        <code>userManager</code>
+        <title>用户管理</title>
+        <menuId>3</menuId>
+        <parentId>1</parentId>
+        <href></href>
+        <icon>sys</icon>
+        <type>menu</type>
+        <path></path>
+        <description>子菜单</description>
+        <elements>
+            <element>
+                <code>301</code>
+                <type>button</type>
+                <name>adduser</name>
+                <uri>/sys/adduser</uri>
+                <method>post</method>
+                <description>新建用户</description>
+            </element>
+            <element>
+                <code>302</code>
+                <type>button</type>
+                <name>edituser</name>
+                <uri>/sys/edituser</uri>
+                <method>post</method>
+                <description>编辑用户</description>
             </element>
         </elements>
     </menu>
