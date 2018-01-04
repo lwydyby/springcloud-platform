@@ -6,7 +6,7 @@ public class Model {
     String menuid;
     String name;
     String url;
-    List<SubMenu> list;
+    List<SubMenu> subMenu;
 
     public String getMenuid() {
         return menuid;
@@ -32,11 +32,11 @@ public class Model {
         this.url = url;
     }
 
-    public List<SubMenu> getList() {
-        return list;
+    public List<SubMenu> getSubMenu() {
+        return subMenu;
     }
 
-    public void setList(List<SubMenu> list) {
-        this.list = list;
+    public void setSubMenu(List<SubMenu> subMenu) {
+        this.subMenu = subMenu;
     }
 }

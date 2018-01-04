@@ -2,7 +2,9 @@ package com.gameley.config;
 
 
 import com.gameley.common.handler.GlobalExceptionHandler;
+import com.gameley.gameleyauth.config.UserAuthConfig;
 import com.gameley.gameleyauth.interceptor.UserAuthRestInterceptor;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;

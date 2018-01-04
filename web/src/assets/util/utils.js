@@ -519,35 +519,16 @@ let utils = {
      * 查看是否有对应模块某些菜单的权限
      * @param allMenus
      * @param menuIds
-     * @returns {Array}
+     * @returns {boolean}
      */
     getHiddenButtons(allMenus, menuIds) {
-      // if(allMenus===undefined||allMenus===""){
-      //   allMenus=localStorage.getItem(ALL_MENUS);
-      // }
-      let buttonHiddens = []
-      // console.log("menuIds:"+menuIds+"menus:"+JSON.stringify(menus));
-      let flag = false
-      for (let k in menuIds) {
-        let modelId = this.getModelIdByMenuId(menuIds[k])
-        let menus = this.getModelMenus(allMenus, modelId)
-        let menuId = menuIds[k]
-        for (let i in menus) {
-          let item = menus[i]
-          if (item.menu_id === menuId) {
-            flag = true
-            break
+        for(let i=0;i<allMenus.length;i++){
+          if(allMenus[i]===menuIds){
+            return false;
           }
+
         }
-        if (flag) {
-          buttonHiddens.push(false)
-        } else {
-          buttonHiddens.push(true)
-        }
-        flag = false
-      }
-      console.log(buttonHiddens)
-      return buttonHiddens
+      return true;
     },
     /**
      * 按模块顺序 获得所有有访问路径的菜单

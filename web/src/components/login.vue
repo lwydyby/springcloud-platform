@@ -43,8 +43,7 @@
   }
   .content-cha{
     width: 100%;
-    height: 100%;
-    position: fixed;
+    height: 100%;    position: fixed;
     background: url(../../static/images/login/u10504.jpg) fixed center center  no-repeat ;
     background-size: cover;
   }
@@ -74,6 +73,7 @@
           },
           loading: false,
 
+
           marginTop: (document.documentElement.clientHeight - 400) / 2,
           marginLeft: (document.documentElement.clientWidth - 500) / 2,
           user:{id:null,name:null},
@@ -82,6 +82,9 @@
         },
       mixins: [mixin],
       created:function () {
+        localStorage.clear();
+        this.setLoginOut
+        this.loginchange(true);
         this.formData=utils.clone(this.createData);
         let brow=$.browser;
         var explorer = window.navigator.userAgent ;
@@ -102,7 +105,7 @@
           })()
         }
     },
-
+    props:['flag'],
       methods:{
         show: function (ev) {
           if (ev.keyCode === 13) {
@@ -122,12 +125,14 @@
         },
         login:function(){
           this.setMsg(null);
+          localStorage.clear();
+
           this.submitData.password = this.getDesPwd(this.formData.passwords);
           this.submitData.username = this.formData.username;
 //          this.openFullScreen2()
           this.loading = true
           this.$http.post(URL_CENTER_URL+'gameley-auth/oauth/token',this.submitData).then(function (response) {
-            let data=response.data;
+            let data=response.data.data;
             this.loading = false;
             if(response.body.status===200){
               localStorage.setItem("token", data.token);
@@ -135,17 +140,27 @@
               this.user.name=data.name;
               this.setUser(this.user);
               localStorage.setItem(USER, JSON.stringify(this.user));
-              this.$http.post(URL_CENTER_URL+'user-service/menu/getallmenu').then(function (response) {
-                console.log(response)
+              this.$http.post(URL_CENTER_URL+'user-api/menu/getallmenu').then(function (response) {
+                let menudata=response.body;
+                this.setMenus(menudata);
+                localStorage.setItem(MENUS,JSON.stringify(menudata));
+                this.$http.post(URL_CENTER_URL+'user-api/element/getElementCode').then(function (response) {
+                  let elementcode=response.body.data;
+                  this.setAllMenus(elementcode);
+                  localStorage.setItem(ALL_MENUS,JSON.stringify(elementcode));
+                  this.go('/hello',null);
+                  this.loginchange(false);
 
+                }, function (response) {
 
+                });
               }, function (response) {
 
               });
 
 
 
-              this.go('/hello',null);
+
             }else{
               this.setMsg(response.body.message);
             }
@@ -154,6 +169,9 @@
             this.loading = false
             this.setMsg(null);
           });
+        },
+        loginchange(flag){
+          this.$emit('loginchange',flag);
         },
         transformToFormat: function(sNodes) {
           var i,l,

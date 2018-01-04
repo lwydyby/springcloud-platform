@@ -6,6 +6,8 @@ import com.gameley.bean.JwtInfo;
 
 import com.gameley.common.constant.RestCodeConstants;
 import com.gameley.common.msg.auth.TokenErrorResponse;
+
+import com.gameley.feign.ElementService;
 import com.gameley.utils.JwtHelper;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
@@ -23,7 +25,8 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class loginfiler extends ZuulFilter {
 
-
+    @Autowired
+    ElementService iUserService;
     @Override
     public String filterType() {
         return "pre";
@@ -52,19 +55,24 @@ public class loginfiler extends ZuulFilter {
         final String requesturi=request.getRequestURI().substring(zuulPrefix.length());
         String token=request.getHeader("token");
         //不进行拦截的地址
-        System.out.println(requesturi);
         if(isStartWith(requesturi)){
             return null;
         }
+//        String uri=requesturi.substring(1);
+//        uri=uri.substring(uri.indexOf("/"));
+//
+//
+//        if(iUserService.getpermission(uri)==0){
+//            setFailedRequest("无权限访问", RestCodeConstants.PERMISSION_ERROR_CODE);
+//        }
         /**
          * 未登录，踢出
          */
         if(token==null){
             ctx.setSendZuulResponse(false);// 过滤该请求，不对其进行路由
-            ctx.setResponseStatusCode(401);// 返回错误码
-            ctx.setResponseBody("{\"result\":\"username is not correct!\"}");// 返回错误内容
+            ctx.setResponseStatusCode(RestCodeConstants.TOKEN_ERROR_CODE);// 返回错误码
+            ctx.setResponseBody("fail token");// 返回错误内容
             ctx.set("isSuccess", false);
-            System.out.println("不存在token，踢出");
             return null;
         }
 
@@ -86,7 +94,6 @@ public class loginfiler extends ZuulFilter {
                  */
                 setFailedRequest("token过期", RestCodeConstants.TOKEN_ERROR_CODE);
                 return null;
-
 //                String refreshToken=jwtInfo.getToken();
 //                ctx.addZuulRequestHeader("token",refreshToken);
 //                ctx.addZuulResponseHeader("token",refreshToken);

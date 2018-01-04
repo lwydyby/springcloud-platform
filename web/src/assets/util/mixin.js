@@ -115,8 +115,9 @@ var mixin = {
      * 获取相关菜单是否有相应权限
      * @param menuIds 要查询权限的菜单ID数组
      */
-    getHiddenButtons: function(menuIds){
-      this.buttonHidden = utils.getHiddenButtons(this.getAllMenus,menuIds);
+    getHiddenButtons: function(code){
+      let flag=utils.getHiddenButtons(this.getAllMenus,code);
+      return flag;
 
     },
     handleReset() {

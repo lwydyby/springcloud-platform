@@ -36,7 +36,7 @@ public class RoleMenu extends Model<RoleMenu> {
 
     //
     @TableField("menu_id")
-    private Integer menuId;
+    public Integer menuId;
 
 
 	/**

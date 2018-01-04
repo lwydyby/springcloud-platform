@@ -33,7 +33,7 @@ zuul:
 
 gate:
   ignore:
-    startWith: /static,/login,/gameley-auth/oauth/token
+    startWith: /static,/login,/gameley-auth/oauth/token,/user-api/menu/getallmenu,/user-api/element/getElementCode
 
 audience:
   clientId: 098f6bcd4621d373cade4e832627b4f6

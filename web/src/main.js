@@ -10,7 +10,6 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import vueEventCalendar from 'vue-event-calendar'
 import VueResource from 'vue-resource'
-import './style.less'
 import 'vue-event-calendar/dist/style.css'
 import VueLocalStorage from 'vue-localstorage'
 // import fullCalendar from 'vue-fullcalendar'
@@ -102,7 +101,7 @@ const router = new VueRouter({
     {
       path: '/',
       component: function (resolve) {
-        require(['./components/login.vue'], resolve)
+        require(['./components/Hello.vue'], resolve)
       }
     },
     {
@@ -116,23 +115,18 @@ const router = new VueRouter({
       component: function (resolve) {
         require(['./components/Hello.vue'], resolve)
       }
+    },
+    {
+      path: '/System/menuManage',
+      component: function (resolve) {
+        require(['./components/System/menuManage.vue'], resolve)
+      }
     }
   ]
 })
 
 let ress = ""
-router.beforeEach((to, from, next) => {
-  let path = to.path;
-  let na = next;
-  if (path === "/login") {
-    next()
-  } else {
-    next()
 
-  }
-
-
-})
 
 
 

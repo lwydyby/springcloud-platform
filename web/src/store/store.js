@@ -4,8 +4,6 @@
 
 import Vue from 'vue'
 import Vuex from 'vuex'
-import event from './event';
-import theme from './theme';
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
@@ -16,10 +14,6 @@ const store = new Vuex.Store({
     productInfo: null,
     productCount: null,
 
-  },
-  modules: {
-    event,
-    theme
   },
   getters: {
     getUser: function (state) {

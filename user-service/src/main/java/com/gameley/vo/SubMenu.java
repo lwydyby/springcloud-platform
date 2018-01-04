@@ -4,6 +4,7 @@ public class SubMenu {
     String menuid;
     String name;
     String url;
+    Integer sort;
 
     public String getMenuid() {
         return menuid;
@@ -27,5 +28,13 @@ public class SubMenu {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 }

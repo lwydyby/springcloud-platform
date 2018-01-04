@@ -88,9 +88,10 @@ public class MenuGenerator {
                menu.setType(Optional.ofNullable(item.element("type").getTextTrim()).orElse(""));
                menu.setPath(path);
                menu.setDescription(Optional.ofNullable(item.element("description").getTextTrim()).orElse(""));
+               menu.setOrderNum(Integer.valueOf(Optional.ofNullable(item.element("sort").getTextTrim()).orElse("1")));
                menus.add(menu);
                if(!"".equals(href)){
-                   codes.add(code+":"+menuid+",");
+                   codes.add(code+":'"+href+"',");
                }
                Element elements = item.element("elements");
                if (elements != null) {
@@ -102,12 +103,13 @@ public class MenuGenerator {
                        element.setType(Optional.ofNullable(e.element("type").getTextTrim()).orElse(""));
                        String name=Optional.ofNullable(e.element("name").getTextTrim()).orElse("");
                        element.setName(name);
-                       element.setUri(Optional.ofNullable(e.element("uri").getTextTrim()).orElse(""));
+                       String uri=Optional.ofNullable(e.element("uri").getTextTrim()).orElse("");
+                       element.setUri(uri);
                        element.setMenuId(String.valueOf(menuid));
                        element.setMethod(Optional.ofNullable(e.element("method").getTextTrim()).orElse(""));
-                       element.setDescription(Optional.ofNullable(item.element("description").getTextTrim()).orElse(""));
+                       element.setDescription(Optional.ofNullable(e.element("description").getTextTrim()).orElse(""));
                        elementss.add(element);
-                       codes.add(name+":"+ecode+",");
+                       codes.add(name+":'"+uri+"',");
                    }
                }
 

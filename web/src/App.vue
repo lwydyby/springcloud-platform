@@ -4,26 +4,38 @@
     <router-view></router-view>-->
     <!--<Test class="main"></Test>-->
     <template v-if="!goLogin">
-      <router-view></router-view>
+      <el-container style="height: 966px; border: 1px solid #eee">
+        <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+          <menus :menus="getMenus"></menus>
+        </el-aside>
+
+        <el-container>
+          <el-header style="text-align: right; font-size: 12px">
+            <span style="font-size: 20px;line-height: 60px">{{getUser.name}}</span>
+            <span style="font-size: 20px;line-height: 60px" @click="logout">登出</span>
+          </el-header>
+
+          <el-main>
+            <router-view></router-view>
+          </el-main>
+        </el-container>
+      </el-container>
+
+
     </template>
     <template v-else>
-      <login></login>
+      <login  v-on:loginchange="loginchange"></login>
     </template>
 
   </div>
 </template>
 <style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+  a{
+    text-decoration: none;
   }
 </style>
 <script>
-//  import Test from './Test.vue'
+
   import Vue from 'vue';
   import store from './store/store';
   import menus from './menus.vue'
@@ -55,17 +67,41 @@
       Vue.http.options.emulateHTTP = true;
     },
     created:function(){
-      if(this.getUser==null){
-        let o = localStorage.getItem(USER);
-        if(o !=null ){
-          this.setUser(JSON.parse(o));
-        }
-      }
       if(localStorage.getItem("token")){
         this.goLogin=false;
       }else{
         this.goLogin=true;
       }
+      if(this.getUser==null&&!this.goLogin){
+        let o = localStorage.getItem(USER);
+        if(o !=null ){
+          this.setUser(JSON.parse(o));
+        }
+      }
+      if(this.getMenus==null&&!this.goLogin){
+        let o = localStorage.getItem(MENUS);
+        if(o !=null ){
+          this.setMenus(JSON.parse(o));
+        }
+      }
+      if(this.getAllMenus==null&&!this.goLogin){
+        let o = localStorage.getItem(ALL_MENUS);
+        if(o !=null ){
+          this.setAllMenus(JSON.parse(o));
+        }
+      }
+      this.$router.beforeEach((to, from, next) => {
+        let path = to.path;
+        let na = next;
+        if (path === "/login") {
+          next()
+        } else {
+          next()
+
+        }
+
+
+      })
       //ajax 拦截
       Vue.http.interceptors.push((request, next)  => {
         switch(request.method){
@@ -78,7 +114,19 @@
             break;
         }
         next((response) => {
-
+            if(response.status===401){
+              this.$message.error('登录超时');
+              this.go("/login")
+              localStorage.clear();
+              this.setLoginOut
+              this.goLogin=true;
+            }
+          if(response.status===402){
+            this.$message.error('编辑保存失败，请核实数据后重试');
+          }
+          if(response.status===403){
+            this.$message.error('您无权限进行该操作');
+          }
 
         });
       });
@@ -93,11 +141,22 @@
       loginNotify:function(){
       },
       go: function (path, data) {
-        this.$route.router.go({
-          path: path,
-          query: data
-        }
-        )
+        this.$router.push({
+            path: path,
+            query: data
+          }
+        );
+
+      },
+      logout:function () {
+        localStorage.clear();
+        this.setLoginOut
+        this.go("/login")
+        this.goLogin=true;
+      },
+      loginchange(flag){
+        this.goLogin=flag;
+
       }
     }
   }
@@ -106,43 +165,6 @@
 </script>
 
 <style>
-  #App{
-    padding: 0px;
-    margin: 0px;
-  }
-  #main {
-    float: right;
-    width: 85%;
-  }
-  #side {
-    float: left;
-    width: 15%;
-  }
-  .menu {
-    background-color: #1f2d3d;
-    height: 150%;
-    position: absolute;
-  }
-  #router-view {
-    background-color: #ecf0f5;
-    left: 15%;
-    height:139.2%;
-    padding: 20px;
-    top: 60px;
-    position: absolute;/*很重要，不能随便写*/
-    width: 83%;
-  }
-  .el-badge {
-    margin-top: -3px;
-    margin-right: 40px;
-  }
-  .main_left {
-    float: left;
-    padding-top: 20px;
-  }
-  .main_right {
-    float: right;
-    padding-right: 20px;
-    padding-top: 20px;
-  }
+
+
 </style>

@@ -1,16 +1,26 @@
 <template>
   <div>
     <div>
-      <el-menu :router="true" class="el-menu-vertical-demo"   background-color="#1C2632"  text-color="#FBFDFF">
+      <el-menu :router="true" class="el-menu-vertical-demo">
         <template v-for="item in menus">
-          <el-menu-item v-if="item.model_url" :index="item.model_url"  @click="getNav(item.menu_id)" ><i class="el-icon-menu"></i>{{item.menu_name}}</el-menu-item>
-          <el-menu-item v-else-if="item.menu_url" :index="item.menu_path" @click="getNav(item.menu_id)"><i class="el-icon-menu"></i>{{item.menu_name}}</el-menu-item>
-          <el-submenu v-else :index="item.menu_name">
-            <template slot="title"><i class="el-icon-message"></i>{{item.menu_name}}</template>
-            <template v-for="i in item.sub_menus">
-              <el-menu-item v-if="i.menu_path" :index="i.menu_path" @click="getNav(i.menu_id)"><i class="el-icon-menu"></i>{{i.menu_name}}</el-menu-item>
-            </template>
-          </el-submenu>
+          <template v-if="item.url">
+            <router-link :to="{ path: item.url, exact: true}" >
+              <el-menu-item  :index="item.url"><i class="el-icon-menu"></i>{{item.name}}</el-menu-item>
+            </router-link>
+          </template>
+          <template v-else>
+            <el-submenu index="1">
+              <template slot="title">
+                <i class="el-icon-location"></i>
+                <span>{{item.name}}</span>
+              </template>
+              <template v-for="items in item.subMenu">
+                <router-link :to="{ path: items.url, exact: true}" >
+                  <el-menu-item  :index="items.url"><i class="el-icon-menu"></i>{{items.name}}</el-menu-item>
+                </router-link>
+              </template>
+            </el-submenu>
+          </template>
         </template>
       </el-menu>
     </div>
@@ -25,9 +35,8 @@
       }
     },
     name: 'menus',
-    props: ['menus', 'nav'],
+    props: ['menus'],
     created: function () {
-      console.log(this.menus)
     },
     components: {
       subMenu

@@ -5,7 +5,8 @@
         <title>系统管理</title>        <!--中文名-->
         <menuId>1</menuId>        <!--菜单id-->
         <parentId>-1</parentId>   <!--父菜单id-->
-        <href></href>              <!--请求地址-->
+        <href></href>
+        <sort>1</sort><!--请求地址-->
         <icon>sys</icon>          <!--菜单图标 -->
         <type>menu</type>          <!-- 类型（非menu类型生成菜单时忽略）-->
         <path></path>   <!-- 前台文件地址 （生成路由使用）-->
@@ -19,56 +20,77 @@
         <href></href>
         <icon>sys</icon>
         <type>menu</type>
-        <path></path>
+        <path>/System/menuManage</path>
+        <sort>1</sort>
         <description>子菜单</description>
         <elements>
             <element>
-                <code>200</code>
-                <type>button</type>
-                <name>getmenupermision</name>
-                <uri>/sys/getmenu</uri>                    <!-- 请求地址 -->
+                <code>1002</code>
+                <type>other</type>
+                <name>getmenutree</name>
+                <uri>/role/getMenuTree</uri>                    <!-- 请求地址 -->
                 <method>post</method>          <!-- 请求方式 -->
-                <description>查询菜单</description>  <!-- 备注描述-->
+                <description>查询菜单树</description>  <!-- 备注描述-->
             </element>
             <element>
-                <code>202</code>
-                <type>button</type>
-                <name>editmenupermision</name>
-                <uri>/sys/editmenu</uri>                    <!-- 请求地址 -->
+                <code>2002</code>
+                <type>other</type>
+                <name>getrolename</name>
+                <uri>/role/getRoleName</uri>                    <!-- 请求地址 -->
                 <method>post</method>          <!-- 请求方式 -->
-                <description>编辑菜单</description>  <!-- 备注描述-->
+                <description>查询权限组</description>  <!-- 备注描述-->
+            </element>
+            <element>
+                <code>3002</code>
+                <type>other</type>
+                <name>getrolebyid</name>
+                <uri>/role/getRoleById</uri>                    <!-- 请求地址 -->
+                <method>post</method>          <!-- 请求方式 -->
+                <description>获取当前权限组菜单</description>  <!-- 备注描述-->
+            </element>
+            <element>
+                <code>4002</code>
+                <type>button</type>
+                <name>addRole</name>
+                <uri>/role/addRole</uri>                    <!-- 请求地址 -->
+                <method>post</method>          <!-- 请求方式 -->
+                <description>新建权限组</description>  <!-- 备注描述-->
+            </element>
+            <element>
+                <code>5002</code>
+                <type>button</type>
+                <name>editRole</name>
+                <uri>/role/editRole</uri>                    <!-- 请求地址 -->
+                <method>post</method>          <!-- 请求方式 -->
+                <description>编辑权限组</description>  <!-- 备注描述-->
+            </element>
+            <element>
+                <code>6002</code>
+                <type>button</type>
+                <name>saveRolebyId</name>
+                <uri>/role/saveRolebyId</uri>                    <!-- 请求地址 -->
+                <method>post</method>          <!-- 请求方式 -->
+                <description>保存菜单权限</description>  <!-- 备注描述-->
+            </element>
+            <element>
+                <code>7002</code>
+                <type>button</type>
+                <name>getUserName</name>
+                <uri>/user/getUserName/</uri>                    <!-- 请求地址 -->
+                <method>post</method>          <!-- 请求方式 -->
+                <description>查询用户</description>  <!-- 备注描述-->
+            </element>
+            <element>
+                <code>8002</code>
+                <type>button</type>
+                <name>editUserRole</name>
+                <uri>/user/editUserRole</uri>                    <!-- 请求地址 -->
+                <method>post</method>          <!-- 请求方式 -->
+                <description>编辑用户权限</description>  <!-- 备注描述-->
             </element>
         </elements>
     </menu>
-    <menu>
-        <code>userManager</code>
-        <title>用户管理</title>
-        <menuId>3</menuId>
-        <parentId>1</parentId>
-        <href></href>
-        <icon>sys</icon>
-        <type>menu</type>
-        <path></path>
-        <description>子菜单</description>
-        <elements>
-            <element>
-                <code>301</code>
-                <type>button</type>
-                <name>adduser</name>
-                <uri>/sys/adduser</uri>
-                <method>post</method>
-                <description>新建用户</description>
-            </element>
-            <element>
-                <code>302</code>
-                <type>button</type>
-                <name>edituser</name>
-                <uri>/sys/edituser</uri>
-                <method>post</method>
-                <description>编辑用户</description>
-            </element>
-        </elements>
-    </menu>
+
 
 
 

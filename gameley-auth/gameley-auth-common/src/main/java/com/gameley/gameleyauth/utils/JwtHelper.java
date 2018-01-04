@@ -70,6 +70,7 @@ public class JwtHelper {
     }
 
     public UserInfo getUserInfo(String token,String secrete){
+
         Claims cl=getClaimFromToken(token,secrete);
         UserInfo userInfo=new UserInfo();
         userInfo.setName((String) cl.get("unique_name"));

@@ -34,15 +34,15 @@
         temp.size = this.page.size;
         temp2 = utils.merge(this.query, temp);
 //        let data = utils.getRequestData(this.page.menuId,JSON.stringify(temp2));
-        let data = utils.getRequestData(this.page.menuId,temp2);
-        this.memoryCondition(this.page.menuId,temp2);
+        let data = temp2;
+        this.memoryCondition(temp2);
         return data;
       }
     },
     created: function () {
       this.currentPage = this.page.current;
       this.size = this.page.size;
-      this.$http.post(URL,this.formData).then(function (response) {
+      this.$http.post(URL+this.page.menuId,this.formData).then(function (response) {
         let data = response.data;
         this.page.allCount = data.allCount;
         this.page.items = data.allInfos;
@@ -71,7 +71,7 @@
 
       },
       getList:function(){
-        this.$http.post(URL,this.formData).then(function (response) {
+        this.$http.post(URL+this.page.menuId,this.formData).then(function (response) {
           let data = response.data;
           this.page.allCount = data.allCount;
           this.page.current = data.current;
