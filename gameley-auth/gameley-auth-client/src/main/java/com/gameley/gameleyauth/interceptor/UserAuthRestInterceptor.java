@@ -37,7 +37,10 @@ public class UserAuthRestInterceptor extends HandlerInterceptorAdapter {
         if(annotation!=null) {
             return super.preHandle(request, response, handler);
         }
-
+        String uri=request.getRequestURI();
+        if("/swagger-resources".equals(uri)||uri.contains("configuration")){
+            return super.preHandle(request, response, handler);
+        }
         String token = request.getHeader("token");
         JwtHelper jwt=new JwtHelper();
         UserInfo userInfo=jwt.getUserInfo(token, userAuthConfig.getSecret());

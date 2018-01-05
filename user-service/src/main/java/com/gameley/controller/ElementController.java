@@ -12,6 +12,7 @@ import com.gameley.service.ElementService;
 import com.gameley.service.MenuService;
 import com.gameley.service.RoleMenuService;
 import com.gameley.service.UserService;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +44,7 @@ public class ElementController {
     RoleMenuService roleMenuService;
     @Autowired
     MenuService menuService;
+    @ApiOperation(value = "获取按钮权限" ,httpMethod ="POST")
     @RequestMapping("getElementCode")
     private BaseResponse getElementCode(){
         Integer userid= Integer.valueOf(BaseContextHandler.getUserID());
@@ -60,6 +62,7 @@ public class ElementController {
         objectRestResponse.setData(list);
         return objectRestResponse;
     }
+    @ApiOperation(value = "获取权限（暂未使用）" ,httpMethod ="POST")
     @RequestMapping("permission")
     @IgnoreUserToken
     private Integer getpermission(String uri){

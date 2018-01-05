@@ -20,6 +20,7 @@ import com.gameley.utils.TreeUtils;
 import com.gameley.vo.Model;
 import com.gameley.vo.SubMenu;
 import com.gameley.vo.Tree;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,7 +53,7 @@ public class RoleController {
     private RoleMenuService roleMenuService;
     @Autowired
     private RoleService roleService;
-
+    @ApiOperation(value = "获取菜单树" ,httpMethod ="POST")
     @RequestMapping("getMenuTree")
     private List<Tree> getTree(){
         List<Menu> menus=menuService.selectList(Condition.EMPTY);
@@ -80,6 +81,7 @@ public class RoleController {
         return trees;
 
     }
+    @ApiOperation(value = "获取权限组信息" ,httpMethod ="POST")
     @RequestMapping("getRoleName")
 	public ObjectRestResponse getRoleName(){
         List<Role> roles=roleService.selectList(Condition.EMPTY);
@@ -88,6 +90,7 @@ public class RoleController {
         objectRestResponse.setRel(true);
         return objectRestResponse;
     }
+    @ApiOperation(value = "根据id查询权限组" ,httpMethod ="POST")
     @RequestMapping("getRoleById")
     private ObjectRestResponse getRoleById(@RequestBody JSONObject result){
         String roleid= result.getString("roleid");
@@ -97,6 +100,7 @@ public class RoleController {
         objectRestResponse.setData(menuid);
         return objectRestResponse;
     }
+    @ApiOperation(value = "新建权限组" ,httpMethod ="POST")
     @RequestMapping("addRole")
     private ObjectRestResponse addRole(@RequestBody JSONObject result){
         ObjectRestResponse objectRestResponse=new ObjectRestResponse();
@@ -112,6 +116,7 @@ public class RoleController {
         }
         return objectRestResponse;
     }
+    @ApiOperation(value = "编辑权限组" ,httpMethod ="POST")
     @RequestMapping("editRole")
     private BaseResponse editRole(@RequestBody Role role){
         Boolean flag=roleService.updateById(role);
@@ -122,6 +127,7 @@ public class RoleController {
         }
 
     }
+    @ApiOperation(value = "保存权限设置" ,httpMethod ="POST")
     @RequestMapping("saveRolebyId")
     private BaseResponse saveRoleById(@RequestBody JSONObject jsonObject){
         Integer roleid=jsonObject.getInteger("roleid");

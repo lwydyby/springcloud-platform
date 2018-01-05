@@ -105,7 +105,6 @@ public class loginfiler extends ZuulFilter {
 
 
         } catch (Exception e) {
-            e.printStackTrace();
             setFailedRequest(JSON.toJSONString(new TokenErrorResponse(e.getMessage())), RestCodeConstants.TOKEN_ERROR_CODE);
             return null;
         }

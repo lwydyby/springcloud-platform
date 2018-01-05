@@ -18,6 +18,7 @@ import com.gameley.utils.JwtHelper;
 import com.gameley.utils.MenuUtils;
 import com.gameley.vo.Audience;
 import com.gameley.vo.Model;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,6 +53,7 @@ public class MenuController {
     private RoleMenuService roleMenuService;
     @Autowired
     private Audience audienceEntity;
+    @ApiOperation(value = "获取菜单信息" ,httpMethod ="POST")
     @RequestMapping("getallmenu")
 	public BaseResponse getAllMenu(){
         Integer id= Integer.valueOf(BaseContextHandler.getUserID());

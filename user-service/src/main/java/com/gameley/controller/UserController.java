@@ -45,7 +45,7 @@ public class UserController {
         return userInfo;
 
     }
-    @ApiOperation(value = "获取用户")
+    @ApiOperation(value = "获取用户" ,httpMethod ="POST")
     @RequestMapping("getUserName/{id}")
     public BaseResponse getUserName(@PathVariable(required = false) Integer id){
         List<User> users;
@@ -66,7 +66,7 @@ public class UserController {
         objectRestResponse.setRel(true);
         return objectRestResponse;
     }
-    @ApiOperation(value = "编辑用户权限")
+    @ApiOperation(value = "编辑用户权限" ,httpMethod ="POST")
     @RequestMapping("editUserRole")
     private BaseResponse editUserRole(@RequestBody JSONObject jsonObject){
         User user=new User();
