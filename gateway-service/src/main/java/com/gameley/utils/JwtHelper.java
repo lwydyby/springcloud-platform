@@ -46,23 +46,23 @@ public class JwtHelper {
         }catch (SignatureException e){
             throw new RuntimeException("秘钥不正确");
         }catch (ExpiredJwtException e){
-            JwtHelper jwt=new JwtHelper();
-            Date expirdate=jwt.getExpirationDateFromToken(jsonWebToken);
-            LocalTime localTime=LocalTime.now();
-            Instant instant = expirdate.toInstant();
-            ZoneId zone = ZoneId.systemDefault();
-            LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, zone);
-            LocalTime expirTime = localDateTime.toLocalTime();
-            LocalTime time=expirTime.plusMinutes(10);
-            /**
-             * 如果在过期时间10min内再次访问，自动刷新token
-             */
-            if(time.isAfter(localTime)){
-                String token=createJWT(getUsernameFromToken(jsonWebToken),getUserIdFromToken(jsonWebToken),
-                        jwtInfo.getClientId(),jwtInfo.getName(),jwtInfo.getExpiresSecond()*1000,jwtProperties.getSecret());
-                jwtInfo.setToken(token);
-            }
-
+//            JwtHelper jwt=new JwtHelper();
+//            Date expirdate=jwt.getExpirationDateFromToken(jsonWebToken);
+//            LocalTime localTime=LocalTime.now();
+//            Instant instant = expirdate.toInstant();
+//            ZoneId zone = ZoneId.systemDefault();
+//            LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, zone);
+//            LocalTime expirTime = localDateTime.toLocalTime();
+//            LocalTime time=expirTime.plusMinutes(10);
+//            /**
+//             * 如果在过期时间10min内再次访问，自动刷新token
+//             */
+//            if(time.isAfter(localTime)){
+//                String token=createJWT(getUsernameFromToken(jsonWebToken),getUserIdFromToken(jsonWebToken),
+//                        jwtInfo.getClientId(),jwtInfo.getName(),jwtInfo.getExpiresSecond()*1000,jwtProperties.getSecret());
+//                jwtInfo.setToken(token);
+//            }
+            throw new RuntimeException("秘钥过期");
         }
         return claims;
 

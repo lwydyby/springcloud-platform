@@ -54,6 +54,7 @@ public class loginfiler extends ZuulFilter {
         HttpServletRequest request = ctx.getRequest();
         final String requesturi=request.getRequestURI().substring(zuulPrefix.length());
         String token=request.getHeader("token");
+        String client=request.getHeader("client");
         //不进行拦截的地址
         if(isStartWith(requesturi)){
             return null;
@@ -68,7 +69,7 @@ public class loginfiler extends ZuulFilter {
         /**
          * 未登录，踢出
          */
-        if(token==null){
+        if(token==null||client==null){
             ctx.setSendZuulResponse(false);// 过滤该请求，不对其进行路由
             ctx.setResponseStatusCode(RestCodeConstants.TOKEN_ERROR_CODE);// 返回错误码
             ctx.setResponseBody("fail token");// 返回错误内容
@@ -85,10 +86,10 @@ public class loginfiler extends ZuulFilter {
             JwtHelper jwtHelper=new JwtHelper();
             jwtHelper.setJwtInfo(jwtInfo);
             Claims claims = jwtHelper.parseJWT(token, audience.getBase64Secret());
+            Claims clientClaims = jwtHelper.parseJWT(client, audience.getClient64Secret());
 
 
-
-            if(claims==null){
+            if(claims==null||clientClaims==null){
                 /**
                  * 暂不使用后台自动刷新，改为前端页面定时自动拉取刷新
                  */
@@ -105,7 +106,6 @@ public class loginfiler extends ZuulFilter {
 
         } catch (Exception e) {
             e.printStackTrace();
-
             setFailedRequest(JSON.toJSONString(new TokenErrorResponse(e.getMessage())), RestCodeConstants.TOKEN_ERROR_CODE);
             return null;
         }

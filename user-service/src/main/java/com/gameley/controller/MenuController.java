@@ -3,25 +3,29 @@ package com.gameley.controller;
 
 import com.baomidou.mybatisplus.mapper.Condition;
 import com.gameley.common.context.BaseContextHandler;
+import com.gameley.common.msg.BaseResponse;
+import com.gameley.common.msg.ObjectRestResponse;
 import com.gameley.entity.Menu;
-import com.gameley.entity.Role;
+
 import com.gameley.entity.RoleMenu;
 import com.gameley.entity.User;
+
 import com.gameley.service.MenuService;
 import com.gameley.service.RoleMenuService;
 import com.gameley.service.RoleService;
 import com.gameley.service.UserService;
+import com.gameley.utils.JwtHelper;
 import com.gameley.utils.MenuUtils;
+import com.gameley.vo.Audience;
 import com.gameley.vo.Model;
-import com.gameley.vo.SubMenu;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -35,6 +39,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("menu")
+@EnableConfigurationProperties(Audience.class)
 public class MenuController {
 
     @Autowired
@@ -45,9 +50,10 @@ public class MenuController {
     private RoleService roleService;
     @Autowired
     private RoleMenuService roleMenuService;
-
+    @Autowired
+    private Audience audienceEntity;
     @RequestMapping("getallmenu")
-	public List<Model> getAllMenu(){
+	public BaseResponse getAllMenu(){
         Integer id= Integer.valueOf(BaseContextHandler.getUserID());
         User user =userService.selectById(id);
         Integer roleid=user.getRoleid();
@@ -61,7 +67,22 @@ public class MenuController {
 
 
         }
-        return MenuUtils.getmenu(menus);
+        List<RoleMenu> roleMenuList=roleMenuService.selectList(Condition.create().eq("role_id",roleid));
+        List<Integer> list=new ArrayList<>();
+        for(RoleMenu roleMenu:roleMenuList){
+            if(roleMenu.getMenuId()>1000){
+                list.add(roleMenu.getMenuId());
+            }
+
+        }
+        List<Model> models=MenuUtils.getmenu(menus);
+        String accessToken = JwtHelper.createJWT(models,list
+                , audienceEntity.getClientId(), audienceEntity.getName(),
+                audienceEntity.getExpiresSecond() * 1000, audienceEntity.getBase64Secret());
+        ObjectRestResponse objectRestResponse=new ObjectRestResponse();
+        objectRestResponse.setData(accessToken);
+
+        return objectRestResponse;
 
 
     }

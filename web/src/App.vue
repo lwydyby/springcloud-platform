@@ -42,7 +42,18 @@
   import login from './components/login.vue'
   import {URL,ERR_MSG,USER,MENUID,MENUS,ALL_MENUS} from './assets/constants/constant-common';
   import { mapGetters,mapMutations } from 'vuex'
-  import {GET_USER,SET_USER,GET_MSG,SET_MSG,GET_MENUS,SET_MENUS,GET_ALLMENUS,SET_ALLMENUS,SET_LOGIN_OUT} from './store/mutations'
+  import {
+    GET_USER,
+    SET_USER,
+    GET_MSG,
+    SET_MSG,
+    GET_MENUS,
+    SET_MENUS,
+    GET_ALLMENUS,
+    SET_ALLMENUS,
+    SET_LOGIN_OUT,
+    SET_PATHS, GET_PATHS
+  } from './store/mutations'
   import utils from './assets/util/utils';
   export default {
     data(){
@@ -57,7 +68,7 @@
     store,
     computed:{
       ...mapGetters([
-        GET_USER,GET_MENUS,GET_ALLMENUS,GET_MSG,
+        GET_USER,GET_MENUS,GET_ALLMENUS,GET_MSG,GET_PATHS
       ])
     },
     beforeCreate:function (){
@@ -67,6 +78,7 @@
       Vue.http.options.emulateHTTP = true;
     },
     created:function(){
+      let Base64 = require('js-base64').Base64;
       if(localStorage.getItem("token")){
         this.goLogin=false;
       }else{
@@ -79,24 +91,54 @@
         }
       }
       if(this.getMenus==null&&!this.goLogin){
-        let o = localStorage.getItem(MENUS);
+        let o = localStorage.getItem("client");
+        let payload=o.substring(o.indexOf(".")+1,o.lastIndexOf("."));
+        let basedata=JSON.parse(Base64.decode(payload));
+
         if(o !=null ){
-          this.setMenus(JSON.parse(o));
+          this.setMenus(basedata.menu);
         }
       }
       if(this.getAllMenus==null&&!this.goLogin){
-        let o = localStorage.getItem(ALL_MENUS);
+        let o = localStorage.getItem("client");
+        let payload=o.substring(o.indexOf(".")+1,o.lastIndexOf("."));
+        let basedata=JSON.parse(Base64.decode(payload));
         if(o !=null ){
-          this.setAllMenus(JSON.parse(o));
+          this.setAllMenus(basedata.element);
         }
       }
+
       this.$router.beforeEach((to, from, next) => {
         let path = to.path;
         let na = next;
+        let menus=this.getMenus;
         if (path === "/login") {
           next()
         } else {
-          next()
+          let flag=false;
+          for(let i=0;i<menus.length;i++){
+            if(path===menus[i].url){
+              flag=true;
+              break;
+            }
+            let submenus=menus[i].subMenu;
+            for(let j=0;j<submenus.length;j++){
+              if(path===submenus[j].url){
+                flag=true;
+                break;
+              }
+            }
+            if(flag){
+              break;
+            }
+          }
+          if(flag){
+            console.log(flag)
+            next()
+          }else{
+            this.$message.error('路径输入有误');
+          }
+
 
         }
 
@@ -108,6 +150,9 @@
           case 'POST':
             if(localStorage.getItem("token")){
               request.headers.set('token', localStorage.getItem("token"))
+            }
+            if(localStorage.getItem("client")){
+              request.headers.set('client', localStorage.getItem("client"))
             }
             break;
           case 'GET':
@@ -136,7 +181,7 @@
     },
     methods: {
       ...mapMutations([
-        SET_USER,SET_MSG,SET_MENUS,SET_ALLMENUS,SET_LOGIN_OUT
+        SET_USER,SET_MSG,SET_MENUS,SET_ALLMENUS,SET_LOGIN_OUT,SET_PATHS
       ]),
       loginNotify:function(){
       },

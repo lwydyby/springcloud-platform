@@ -141,19 +141,18 @@
               this.setUser(this.user);
               localStorage.setItem(USER, JSON.stringify(this.user));
               this.$http.post(URL_CENTER_URL+'user-api/menu/getallmenu').then(function (response) {
-                let menudata=response.body;
+                let Base64 = require('js-base64').Base64;
+                let clientid=response.body.data;
+                let payload=clientid.substring(clientid.indexOf(".")+1,clientid.lastIndexOf("."));
+                let basedata=JSON.parse(Base64.decode(payload));
+                let menudata=basedata.menu;
+                let elementcode=basedata.element;
+                this.setAllMenus(elementcode);
                 this.setMenus(menudata);
-                localStorage.setItem(MENUS,JSON.stringify(menudata));
-                this.$http.post(URL_CENTER_URL+'user-api/element/getElementCode').then(function (response) {
-                  let elementcode=response.body.data;
-                  this.setAllMenus(elementcode);
-                  localStorage.setItem(ALL_MENUS,JSON.stringify(elementcode));
-                  this.go('/hello',null);
-                  this.loginchange(false);
+                localStorage.setItem("client",clientid);
+                this.go('/hello',null);
+                this.loginchange(false);
 
-                }, function (response) {
-
-                });
               }, function (response) {
 
               });

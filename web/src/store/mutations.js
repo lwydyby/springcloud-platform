@@ -16,7 +16,7 @@ export const SET_MSG = 'setMsg'
 //存放产品信息
 export const GET_PRODUCTCOUNT = 'getProductCount'
 export const SET_PRODUCTCOUNT = 'setProductCount'
-export const GET_PRODUCTINFO = 'getProductInfo'
-export const SET_PRODUCTINFO = 'setProductInfo'
+export const GET_PATHS = 'getPaths'
+export const SET_PATHS = 'setPaths'
 // 退出
 export const SET_LOGIN_OUT = 'setLoginOut'

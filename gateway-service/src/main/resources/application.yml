@@ -33,13 +33,14 @@ zuul:
 
 gate:
   ignore:
-    startWith: /static,/login,/gameley-auth/oauth/token,/user-api/menu/getallmenu,/user-api/element/getElementCode
+    startWith: /static,/login,/gameley-auth/oauth/token,/user-api/menu/getallmenu
 
 audience:
   clientId: 098f6bcd4621d373cade4e832627b4f6
   base64Secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=
   name: restapiuser
   expiresSecond: 172800
+  client64Secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0Kiz=
 
 jwt:
   header: token   #http请求头所需要的字段

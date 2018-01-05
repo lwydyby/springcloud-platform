@@ -1,4 +1,4 @@
-package com.gameley.bean;
+package com.gameley.vo;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -12,11 +12,6 @@ public class Audience {
     private String base64Secret;
     private String name;
     private int expiresSecond;
-    private String client64Secret;
-
-    public Audience() {
-    }
-
     public String getClientId() {
         return clientId;
     }
@@ -40,13 +35,5 @@ public class Audience {
     }
     public void setExpiresSecond(int expiresSecond) {
         this.expiresSecond = expiresSecond;
-    }
-
-    public String getClient64Secret() {
-        return client64Secret;
-    }
-
-    public void setClient64Secret(String client64Secret) {
-        this.client64Secret = client64Secret;
     }
 }

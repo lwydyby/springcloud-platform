@@ -11,7 +11,7 @@ const store = new Vuex.Store({
     menus: null,
     allMenus: null,
     msg: null,
-    productInfo: null,
+    paths: null,
     productCount: null,
 
   },
@@ -28,8 +28,8 @@ const store = new Vuex.Store({
     getMsg: function (state) {
       return state.msg
     },
-    getProductInfo: function (state) {
-      return state.productInfo
+    getPaths: function (state) {
+      return state.paths
     },
     getProductCount: function (state) {
       return state.productCount
@@ -53,9 +53,9 @@ const store = new Vuex.Store({
       // console.log("setMsg");
       state.msg = msg
     },
-    setProductInfo: function (state, productInfo) {
+    setPaths: function (state, paths) {
       // console.log("setMsg");
-      state.productInfo = productInfo
+      state.paths = paths
     },
     setProductCount: function (state, productCount) {
       // console.log("setMsg");
