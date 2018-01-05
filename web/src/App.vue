@@ -40,7 +40,7 @@
   import store from './store/store';
   import menus from './menus.vue'
   import login from './components/login.vue'
-  import {URL,ERR_MSG,USER,MENUID,MENUS,ALL_MENUS} from './assets/constants/constant-common';
+  import {URL, ERR_MSG, USER, MENUID, MENUS, ALL_MENUS, URL_CENTER_URL} from './assets/constants/constant-common';
   import { mapGetters,mapMutations } from 'vuex'
   import {
     GET_USER,
@@ -70,6 +70,31 @@
       ...mapGetters([
         GET_USER,GET_MENUS,GET_ALLMENUS,GET_MSG,GET_PATHS
       ])
+    },
+    watch:{
+      "goLogin":function () {
+        if(!this.goLogin){
+          //30分钟自动更新token
+          let onceflag=false;
+          setInterval(function(){
+            if(onceflag){
+              this.$http.post(URL_CENTER_URL+'gameley-auth/oauth/token',{token:localStorage.getItem("token")}).then(function (response) {
+                  let data=response.body.data;
+                  localStorage.setItem("token", data);
+
+
+              }, function (response) {
+
+              });
+            }
+            onceflag=true;
+
+
+          }, 60 * 1000 * 30)
+        }
+
+      }
+
     },
     beforeCreate:function (){
 //      Vue.config.debug = true;

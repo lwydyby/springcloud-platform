@@ -1,6 +1,7 @@
 package com.gameley.gameleyauth.contraller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.gameley.common.msg.ObjectRestResponse;
 import com.gameley.common.msg.auth.TokenErrorResponse;
 import com.gameley.common.utils.vo.UserInfo;
@@ -59,6 +60,36 @@ public class JsonWebToken {
 
 
         }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+            resultMsg = new ResultMsg(ResultStatusCode.SYSTEM_ERR.getErrcode(),
+                    ResultStatusCode.SYSTEM_ERR.getErrmsg(), null);
+            return resultMsg;
+        }
+    }
+    @RequestMapping(value = "oauth/refresh",method = RequestMethod.POST)
+    public Object RefreshAccessToken(@RequestBody JSONObject jsoNobject)
+    {
+
+        ResultMsg resultMsg = null;
+        try
+        {
+            String token=jsoNobject.getString("token");
+            JwtHelper jwt=new JwtHelper();
+            UserInfo user=jwt.getUserInfo(token, audienceEntity.getBase64Secret());
+            if(user.getName()!=null){
+                //拼装accessToken
+                String accessToken = JwtHelper.createJWT(user.getName(), user.getId()
+                        , audienceEntity.getClientId(), audienceEntity.getName(),
+                        audienceEntity.getExpiresSecond() * 1000, audienceEntity.getBase64Secret());
+                ObjectRestResponse response=new ObjectRestResponse<UserInfo>();
+                return response.data(accessToken);
+
+
+            }else {
+                return new TokenErrorResponse("token刷新失败");
+            }        }
         catch(Exception ex)
         {
             ex.printStackTrace();

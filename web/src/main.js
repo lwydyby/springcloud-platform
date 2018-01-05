@@ -113,7 +113,7 @@ const router = new VueRouter({
     {
       path: '/hello',
       component: function (resolve) {
-        require(['./components/Hello.vue'], resolve)
+        require(['./components/System/menuManage.vue'], resolve)
       }
     },
     {

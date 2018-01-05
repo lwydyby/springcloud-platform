@@ -150,7 +150,7 @@
                 this.setAllMenus(elementcode);
                 this.setMenus(menudata);
                 localStorage.setItem("client",clientid);
-                this.go('/hello',null);
+                this.go('/System/menuManage',null);
                 this.loginchange(false);
 
               }, function (response) {

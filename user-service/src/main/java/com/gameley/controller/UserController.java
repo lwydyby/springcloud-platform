@@ -10,6 +10,7 @@ import com.gameley.common.utils.vo.UserInfo;
 import com.gameley.entity.User;
 import com.gameley.gameleyauth.annotation.IgnoreUserToken;
 import com.gameley.service.UserService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +35,7 @@ import java.util.stream.Collectors;
 public class UserController {
     @Autowired
     private UserService userService;
-
+    @ApiOperation(value ="用户验证", httpMethod ="POST", response =UserInfo.class, notes ="用于登录验证")
     @RequestMapping(value = "validate", method = RequestMethod.POST)
     public UserInfo validate(@RequestParam("username") String username, @RequestParam("password") String password){
         User user=userService.selectOne(Condition.create().eq("username",username).eq("password",password));
@@ -44,6 +45,7 @@ public class UserController {
         return userInfo;
 
     }
+    @ApiOperation(value = "获取用户")
     @RequestMapping("getUserName/{id}")
     public BaseResponse getUserName(@PathVariable(required = false) Integer id){
         List<User> users;
@@ -64,6 +66,7 @@ public class UserController {
         objectRestResponse.setRel(true);
         return objectRestResponse;
     }
+    @ApiOperation(value = "编辑用户权限")
     @RequestMapping("editUserRole")
     private BaseResponse editUserRole(@RequestBody JSONObject jsonObject){
         User user=new User();
