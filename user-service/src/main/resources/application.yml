@@ -20,19 +20,27 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-    druid:
-        url: jdbc:mysql://localhost:3306/ag_admin?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=true
-        username: root
-        password: 123456
-        initial-size: 10
-        max-active: 100
-        min-idle: 10
-        max-wait: 60000
-        pool-prepared-statements: true
-        max-pool-prepared-statement-per-connection-size: 20
-        time-between-eviction-runs-millis: 60000
-        min-evictable-idle-time-millis: 300000
-
+#    druid:
+    url: jdbc:mysql://localhost:3306/ag_admin?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=true
+    username: root
+    password: 123456
+    initial-size: 10
+    max-active: 100
+    min-idle: 10
+    max-wait: 60000
+    max-pool-prepared-statement-per-connection-size: 20
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    filters: stat
+    maxActive: 20
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
 
 
 #mybatis

@@ -45,7 +45,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         ArrayList<String> list = new ArrayList<>();
         String[] urls = {
                 "/v2/api-docs",
-                "/swagger2/**",
+                "/swagger-resource/**",
         };
         Collections.addAll(list, urls);
         return list;
