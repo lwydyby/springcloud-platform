@@ -18,3 +18,4 @@
 ![输入图片说明](https://gitee.com/uploads/images/2018/0104/190521_26ae461b_1463938.png "深度截图_选择区域_20180104190513.png")
 ![输入图片说明](https://gitee.com/uploads/images/2018/0104/190311_a2d9b616_1463938.png "深度截图_选择区域_20180104190140.png") 
 
+![输入图片说明](https://gitee.com/uploads/images/2018/0105/192313_5b896fbe_1463938.png "前端UI.png")
