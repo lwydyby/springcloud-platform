@@ -42,6 +42,14 @@ spring:
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
 
+  cloud:
+    config:
+      profile: dev
+      label: master
+      uri: http://localhost:8888/
+  profiles:
+    active: dev
+
 
 #mybatis
 mybatis-plus:
