@@ -60,7 +60,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible=false">取 消</el-button>
-        <el-button  type="primary" @click="formValidate()">确 定</el-button>
+        <el-button  type="primary" @click="formValidate()" :loading="isloading">确 定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -127,8 +127,8 @@ ${column.attrname}: [
                     this.dialogFormVisible=false;
 
                     }, function (response) {
-                    this.isloading=false;
-                    this.setMsg(ERR_MSG);
+                        this.isloading=false;
+
                     });
                 }else{
                     this.$ http.post(URL+MENUID.*,this.formData).then(function (response) {
@@ -139,7 +139,7 @@ ${column.attrname}: [
                     this.setMsg("修改成功");
                     }, function (response) {
                     this.isloading=false;
-                    this.setMsg(ERR_MSG);
+
                     });
                 }
 
