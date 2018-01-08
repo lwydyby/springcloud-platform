@@ -7,8 +7,8 @@ import javax.servlet.annotation.WebServlet;
 /**
  * ${DESCRIPTION}
  *
- * @author wanghaobin
- * @create 2017-06-20 21:34
+ * @author wwmxd
+ * @create 2018-01-08
  */
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = "/druid/*",

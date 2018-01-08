@@ -24,9 +24,9 @@ import java.util.Properties;
 /**
  * mybatis 配置数据源类
  * 
- * @author wanghaobin
- * @date 2016年12月15日
- * @since 1.7
+ * @author wwmxd
+ * @date 2018年01月08日
+ *
  */
 @Configuration
 @EnableTransactionManagement

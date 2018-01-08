@@ -11,10 +11,10 @@ import javax.servlet.annotation.WebInitParam;
 import java.io.IOException;
 
 /**
- * ${DESCRIPTION}
  *
- * @author wanghaobin
- * @create 2017-06-20 21:34
+ *
+ * @author wwmxd
+ * @create 2018-01-08
  */
 @WebFilter(filterName="druidWebStatFilter",urlPatterns="/druid/*",
         initParams={
