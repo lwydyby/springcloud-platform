@@ -1,4 +1,5 @@
 ###  **Spring Cloud 项目脚手架** 
+自动生成测试网址：http://dota2info.cn/index
 
  **技术栈** 
 1. Spring Boot
