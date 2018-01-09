@@ -2,12 +2,10 @@ server:
     tomcat:
         max-threads: 10
         min-spare-threads: 10
-    port: 7777
+
 
 # mysql
 spring:
-    application:
-      name: generator
     datasource:
         type: com.alibaba.druid.pool.DruidDataSource
         driverClassName: com.mysql.jdbc.Driver
@@ -20,11 +18,8 @@ spring:
     thymeleaf:
         mode: LEGACYHTML5
         cache: false
-    cloud:
-      config:
-        profile: dev
-        label: master
-        uri: http://localhost:8888/
+
+
     profiles:
       active: dev
 

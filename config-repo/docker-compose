@@ -1,0 +1,24 @@
+version: '2'
+services:
+  mysql:
+    image: registry.cn-qingdao.aliyuncs.com/wwmxd/mysql:1.0
+    ports:
+      - 3306:3306
+    environment:
+    - MYSQL_DATABASE=sp_admin
+    - MYSQL_ROOT_PASSWORD=123456
+  config:
+    image: registry.cn-qingdao.aliyuncs.com/wwmxd/config:1.0
+    ports:
+      - 8888:8888
+  generator:
+    image: registry.cn-qingdao.aliyuncs.com/wwmxd/generator:latest
+    links:
+      - config
+      - mysql
+    ports:
+      - 7777:80
+    depends_on:
+    - config
+    - mysql
+    command: sh -c './wait-for-it.sh config:8888 -t 30  -- java -Djava.security.egd=file:/dev/./urandom -jar /app.jar'

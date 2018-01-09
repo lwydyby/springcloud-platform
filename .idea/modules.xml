@@ -5,15 +5,24 @@
       <module fileurl="file://$PROJECT_DIR$/adplatform.iml" filepath="$PROJECT_DIR$/adplatform.iml" />
       <module fileurl="file://$PROJECT_DIR$/gameley-auth/auth-common.iml" filepath="$PROJECT_DIR$/gameley-auth/auth-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/config/config.iml" filepath="$PROJECT_DIR$/config/config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config/config.iml" filepath="$PROJECT_DIR$/config/config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/gameley-auth/gameley-auth.iml" filepath="$PROJECT_DIR$/gameley-auth/gameley-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gameley-auth/gameley-auth.iml" filepath="$PROJECT_DIR$/gameley-auth/gameley-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gameley-auth/gameley-auth-client/gameley-auth-client.iml" filepath="$PROJECT_DIR$/gameley-auth/gameley-auth-client/gameley-auth-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/gameley-auth/gameley-auth-client/gameley-auth-client.iml" filepath="$PROJECT_DIR$/gameley-auth/gameley-auth-client/gameley-auth-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/gameley-auth/gameley-auth-common/gameley-auth-common.iml" filepath="$PROJECT_DIR$/gameley-auth/gameley-auth-common/gameley-auth-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gameley-auth/gameley-auth-common/gameley-auth-common.iml" filepath="$PROJECT_DIR$/gameley-auth/gameley-auth-common/gameley-auth-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gameley-auth/gameley-auth-server/gameley-auth-server.iml" filepath="$PROJECT_DIR$/gameley-auth/gameley-auth-server/gameley-auth-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/gameley-auth/gameley-auth-server/gameley-auth-server.iml" filepath="$PROJECT_DIR$/gameley-auth/gameley-auth-server/gameley-auth-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/gameley-common/gameley-common.iml" filepath="$PROJECT_DIR$/gameley-common/gameley-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/gameley-generator/gameley-generator.iml" filepath="$PROJECT_DIR$/gameley-generator/gameley-generator.iml" />
       <module fileurl="file://$PROJECT_DIR$/gateway-service/gateway-service.iml" filepath="$PROJECT_DIR$/gateway-service/gateway-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway-service/gateway-service.iml" filepath="$PROJECT_DIR$/gateway-service/gateway-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/user-service/user-service.iml" filepath="$PROJECT_DIR$/user-service/user-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/user-service/user-service.iml" filepath="$PROJECT_DIR$/user-service/user-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zipkin-server/zipkin-server.iml" filepath="$PROJECT_DIR$/zipkin-server/zipkin-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/zipkin-server/zipkin-server.iml" filepath="$PROJECT_DIR$/zipkin-server/zipkin-server.iml" />
     </modules>
   </component>
