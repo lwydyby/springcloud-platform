@@ -2,7 +2,7 @@ server:
     tomcat:
         max-threads: 10
         min-spare-threads: 10
-    port: 7777
+    port: 80
 
 # mysql
 spring:
