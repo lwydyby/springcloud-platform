@@ -17,7 +17,7 @@ services:
       - config
       - mysql
     ports:
-      - 7777:80
+      - 7777:7777
     depends_on:
     - config
     - mysql
