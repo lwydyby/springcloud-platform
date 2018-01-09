@@ -20,7 +20,7 @@ public class defaultInterceptor {
     /**
      * 定义拦截规则：拦截包下面的所有类中，有@RequestMapping注解的方法。
      */
-    @Pointcut(value = "execution(* com.gameley.feign.*) && @annotation(org.springframework.web.bind.annotation.RequestMapping)")
+    @Pointcut(value = "execution(* com.gameley.feign.*.*(..)) && @annotation(org.springframework.web.bind.annotation.RequestMapping)")
     public void controllerMethodPointcut(){}
 
     /**
