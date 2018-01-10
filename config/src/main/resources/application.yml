@@ -1,5 +1,5 @@
 server:
-  port: 8091
+  port: 8888
 
 spring:
     application:
@@ -8,18 +8,29 @@ spring:
         config:
             server:
                 git:
-                    uri: https://gitee.com/lwydyby/spring-boot-cloud
+                    uri: https://gitee.com/lwydyby/springcloud-adplatform.git
                     search-paths: config-repo
-eureka:
-    instance:
-        statusPageUrlPath: /info
-        healthCheckUrlPath: /health
+    rabbitmq:
+        host: rabbitmq   # 登录 Rabbitmq 后台管理页面地址为：http://localhost:15672
+        port: 5672
+        username: guest   # 默认账户
+        password: guest   # 默认密码
+#eureka:
+#    instance:
+#        statusPageUrlPath: /info
+#        healthCheckUrlPath: /health
+#
+#    client:
+#        serviceUrl:
+#            defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8090}/eureka/
 
-    client:
-        serviceUrl:
-            defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8090}/eureka/
+#security:
+#  user:
+#    name: user
+#    password: ${CONFIG_SERVER_PASSWORD:password}
+management:
+  security:
+    enabled: false
+encrypt:
+  key: 123456
 
-security:
-  user:
-    name: user
-    password: ${CONFIG_SERVER_PASSWORD:password}
