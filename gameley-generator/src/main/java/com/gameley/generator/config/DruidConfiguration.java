@@ -31,7 +31,7 @@
 //    private String username;
 //    @Value("${spring.datasource.password}")
 //    private String password;
-//    @Value("${spring.datasource.driverClassName}")
+//
 //
 //
 //    @Bean     //声明其为Bean实例
