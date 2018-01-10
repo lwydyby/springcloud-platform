@@ -1,5 +1,5 @@
 ###  **Spring Cloud 项目脚手架** 
-自动生成测试网址：http://dota2info.cn/index
+自动生成测试网址：http://dota2info.cn/index(如需修改配置，只需修改config-repo中的generator.xml，项目会采用springcloud-bus来进行动态更新)
 
  **技术栈** 
 1. Spring Boot
