@@ -19,7 +19,7 @@ spring:
         mode: LEGACYHTML5
         cache: false
     rabbitmq:
-        host: localhost   # 登录 Rabbitmq 后台管理页面地址为：http://localhost:15672
+        host: 118.89.222.117  # 登录 Rabbitmq 后台管理页面地址为：http://localhost:15672
         port: 5672
         username: guest   # 默认账户
         password: guest   # 默认密码
