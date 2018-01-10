@@ -1,6 +1,6 @@
 server:
     tomcat:
-        max-threads: 10
+        max-threads: 50
         min-spare-threads: 10
     port: 80
 
