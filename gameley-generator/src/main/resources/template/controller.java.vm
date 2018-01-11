@@ -18,6 +18,7 @@ import com.gameley.common.msg.ListRestResponse;
 import java.util.*;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.mapper.Condition;
+import com.gameley.entity.${className};
 /**
  * <p>
  * $!{comment} 前端控制器
@@ -74,7 +75,7 @@ public class ${className}Controller {
 
     @ApiOperation(value ="查询所有${comments}", httpMethod ="POST")
     @RequestMapping(value = "getall", method = RequestMethod.POST)
-    public BaseResponse getAll${className}(){
+    public ListRestResponse getAll${className}(){
         ListRestResponse listRestResponse=new ListRestResponse<>();
         List<${className}> allinfos=${secondModuleName}Service.selectList(Condition.EMPTY);
         listRestResponse.setResult(allinfos);
@@ -85,13 +86,13 @@ public class ${className}Controller {
     }
     @ApiOperation(value ="查询单页${comments}", httpMethod ="POST")
     @RequestMapping(value = "getpage", method = RequestMethod.POST)
-    public BaseResponse getPage${className}(@RequestBody JSONObject jsonObject){
+    public ListRestResponse getPage${className}(@RequestBody JSONObject jsonObject){
         Page<${className}> page=new Page();
         page.setCurrent(jsonObject.getInteger("current"));
         page.setCurrent(jsonObject.getInteger("allCount"));
         page.setCurrent(jsonObject.getInteger("size"));
         ListRestResponse listRestResponse=new ListRestResponse<>();
-        Page<Role> pageInfo=${secondModuleName}Service.selectPage(page,Condition.create());
+        Page<${className}> pageInfo=${secondModuleName}Service.selectPage(page,Condition.create());
         int count=${secondModuleName}Service.selectCount(Condition.create());
         List<${className}> allinfos=pageInfo.getRecords();
         listRestResponse.setResult(allinfos);
