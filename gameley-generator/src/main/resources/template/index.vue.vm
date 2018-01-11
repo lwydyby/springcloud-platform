@@ -104,8 +104,8 @@ ${column.attrname}: [
                 id:null,
         },
         dialogFormVisible: false,
-                menuId:"",
-                deleteUrl:MENUID.*,
+                menuId:"getpage${className}",
+                deleteUrl:MENUID.delete${className},
 
 
 
@@ -120,23 +120,20 @@ ${column.attrname}: [
             formSubmit:function () {
                 let id=this.formData.formId;
                 if(id===-1){
-                    this.$ http.post(URL+MENUID.*,this.formData).then(function (response) {
-                    let data = response.data;
-                    if(!utils.isSuccess(data.state))return;
+                    this.\$http.post(URL+MENUID.add${className},this.formData).then(function (response) {
                     this.query();
                     this.dialogFormVisible=false;
-
+                    this.setMsg("创建成功");
                     }, function (response) {
                         this.isloading=false;
 
                     });
                 }else{
-                    this.$ http.post(URL+MENUID.*,this.formData).then(function (response) {
-                    let data = response.data;
-                    if(!utils.isuccess(data.state))return;
-                    this.dialogFormVisible = false
+                    this.\$http.post(URL+MENUID.edit${className},this.formData).then(function (response) {
+
                     this.query();
                     this.setMsg("修改成功");
+                    this.dialogFormVisible = false
                     }, function (response) {
                     this.isloading=false;
 

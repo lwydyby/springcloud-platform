@@ -1,4 +1,31 @@
-#foreach ($column in $codes)
-	${column}
-#end
+//只生成该表格的基础配置
+MENUID={
+   add${className}:"/${secondModuleName}/add"
+   edit${className}:"/${secondModuleName}/edit"
+   delete${className}:"/${secondModuleName}/delete"
+   getall${className}:"/${secondModuleName}/getall"
+   getpage${className}:"/${secondModuleName}/getpage"
 
+}
+
+ ,{
+      path: '/System/${className}Manage',
+      component: function (resolve) {
+        require(['./components/${className}Manage.vue'], resolve)
+      }
+  },
+
+
+SQL:
+insert into base_menu (code,title,menu_id,parent_id,href,icon,type,order_num,description,path)
+	values ('${className}Manage','${comments}',?,?,?,?,'menu',1,'${comments}','/System/${className}Manage');
+insert into base_element (code,type,name,uri,menu_id,method,description)
+	values (100?,'button','add${className}','/${secondModuleName}/add','?','post','新增' );
+insert into base_element (code,type,name,uri,menu_id,method,description)
+	values (200?,'button','edit${className}','/${secondModuleName}/edit','?','post','编辑' );
+insert into base_element (code,type,name,uri,menu_id,method,description)
+	values (300?,'button','delete${className}','/${secondModuleName}/delete','?','post','删除' );
+insert into base_element (code,type,name,uri,menu_id,method,description)
+	values (400?,'other','getall${className}','/${secondModuleName}/getall','?','post','查询所有' );
+insert into base_element (code,type,name,uri,menu_id,method,description)
+	values (500?,'other','getpage${className}','/${secondModuleName}/getpage','?','post','查询分页' );

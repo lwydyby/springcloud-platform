@@ -38,6 +38,7 @@ public class GeneratorUtils {
         templates.add("template/controller.java.vm");
         templates.add("template/service.java.vm");
         templates.add("template/serviceImpl.java.vm");
+        templates.add("template/main.txt.vm");
         return templates;
     }
 
@@ -195,6 +196,9 @@ public class GeneratorUtils {
         }
         if (template.contains("mapper.xml.vm")) {
             return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + className + "Mapper.xml";
+        }
+        if (template.contains("main.txt.vm")) {
+            return frontPath + "views" + File.separator + moduleName + File.separator  + toLowerCaseFirstOne(className) + File.separator  + "main.txt";
         }
 
         return null;

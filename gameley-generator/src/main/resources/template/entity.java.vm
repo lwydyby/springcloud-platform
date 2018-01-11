@@ -8,6 +8,7 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.activerecord.Model;
 import ${package}.entity.${className};
@@ -30,6 +31,10 @@ public class ${className} extends Model<${className}> {
 	#if($column.columnName == $pk.columnName)
     //$column.comments
     @TableId(value="id", type= IdType.AUTO)
+    private $column.attrType $column.attrname;
+	#elseif($column.columnName == "delete_flag")
+    @TableField("$column.columnName")
+    @TableLogic
     private $column.attrType $column.attrname;
 	#else
     //$column.comments
