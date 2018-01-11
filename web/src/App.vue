@@ -197,6 +197,12 @@
           if(response.status===403){
             this.$message.error('您无权限进行该操作');
           }
+          if(response.status===405){
+            this.$message.error('创建失败，请核实数据后重试');
+          }
+          if(response.status===406){
+            this.$message.error('后台操作异常,删除失败');
+          }
 
         });
       });

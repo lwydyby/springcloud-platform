@@ -44,8 +44,8 @@
       this.size = this.page.size;
       this.$http.post(URL+this.page.menuId,this.formData).then(function (response) {
         let data = response.data;
-        this.page.allCount = data.allCount;
-        this.page.items = data.allInfos;
+        this.page.allCount = data.count;
+        this.page.items = data.result;
         //   this.$emit('changeItems');
       }, function (response) {
         // error callback
@@ -72,11 +72,11 @@
       },
       getList:function(){
         this.$http.post(URL+this.page.menuId,this.formData).then(function (response) {
-          let data = response.data;
-          this.page.allCount = data.allCount;
-          this.page.current = data.current;
-          this.page.items = data.allInfos;
-          //     this.$emit('changeItems');
+          let data = response.body;
+          if(this.page.allCount!==data.count){
+            this.page.current=1;
+          }
+          this.page.items = data.result;
         }, function (response) {
           // error callback
         });
