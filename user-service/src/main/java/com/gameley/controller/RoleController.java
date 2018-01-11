@@ -3,9 +3,11 @@ package com.gameley.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.Condition;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.gameley.common.constant.RestCodeConstants;
 import com.gameley.common.msg.BaseResponse;
+import com.gameley.common.msg.ListRestResponse;
 import com.gameley.common.msg.ObjectRestResponse;
 import com.gameley.entity.Element;
 import com.gameley.entity.Menu;
@@ -22,11 +24,7 @@ import com.gameley.vo.SubMenu;
 import com.gameley.vo.Tree;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,6 +82,8 @@ public class RoleController {
     @ApiOperation(value = "获取权限组信息" ,httpMethod ="POST")
     @RequestMapping("getRoleName")
 	public ObjectRestResponse getRoleName(){
+
+
         List<Role> roles=roleService.selectList(Condition.EMPTY);
         ObjectRestResponse objectRestResponse=new ObjectRestResponse();
         objectRestResponse.setData(roles);
