@@ -115,12 +115,13 @@ ${column.attrname}: [
         this.formData=utils.clone(this.createData);
 
     },
+        #set($http='$http')
         mixins: [mixin],
         methods: {
             formSubmit:function () {
                 let id=this.formData.formId;
                 if(id===-1){
-                    this.$ http.post(URL+MENUID.add${className},this.formData).then(function (response) {
+                    this.${http}.post(URL+MENUID.add${className},this.formData).then(function (response)} {
                     this.query();
                     this.dialogFormVisible=false;
                     this.setMsg("创建成功");
@@ -129,7 +130,7 @@ ${column.attrname}: [
 
                     });
                 }else{
-                    this.$ http.post(URL+MENUID.edit${className},this.formData).then(function (response) {
+                    this.${http}.post(URL+MENUID.edit${className},this.formData).then(function (response) {
 
                     this.query();
                     this.setMsg("修改成功");
