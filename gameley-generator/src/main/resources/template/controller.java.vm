@@ -1,6 +1,7 @@
 package ${package}.controller;
 
 
+import com.gameley.common.util.MapUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -91,9 +92,10 @@ public class ${className}Controller {
         page.setCurrent(jsonObject.getInteger("current"));
         page.setCurrent(jsonObject.getInteger("allCount"));
         page.setCurrent(jsonObject.getInteger("size"));
+        Map<String,Object> queryInfos=MapUtil.changeToMap(jsonObject,"id","time")
         ListRestResponse listRestResponse=new ListRestResponse<>();
-        Page<${className}> pageInfo=${secondModuleName}Service.selectPage(page,Condition.create());
-        int count=${secondModuleName}Service.selectCount(Condition.create());
+        Page<${className}> pageInfo=${secondModuleName}Service.selectPage(page,Condition.create().allEq(queryInfos));
+        int count=${secondModuleName}Service.selectCount(Condition.create().allEq(queryInfos));
         List<${className}> allinfos=pageInfo.getRecords();
         listRestResponse.setResult(allinfos);
         listRestResponse.setCount(count);
