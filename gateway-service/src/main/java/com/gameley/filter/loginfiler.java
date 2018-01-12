@@ -59,13 +59,6 @@ public class loginfiler extends ZuulFilter {
         if(isStartWith(requesturi)){
             return null;
         }
-//        String uri=requesturi.substring(1);
-//        uri=uri.substring(uri.indexOf("/"));
-//
-//
-//        if(iUserService.getpermission(uri)==0){
-//            setFailedRequest("无权限访问", RestCodeConstants.PERMISSION_ERROR_CODE);
-//        }
         /**
          * 未登录，踢出
          */

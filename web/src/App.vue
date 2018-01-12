@@ -203,6 +203,9 @@
           if(response.status===406){
             this.$message.error('后台操作异常,删除失败');
           }
+          if(response.status===500){
+            this.$message.error('后台操作异常,请稍后再试');
+          }
 
         });
       });
