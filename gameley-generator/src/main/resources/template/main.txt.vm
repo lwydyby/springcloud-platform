@@ -1,10 +1,10 @@
 //只生成该表格的基础配置
 MENUID={
-   add${className}:"/${secondModuleName}/add"
-   edit${className}:"/${secondModuleName}/edit"
-   delete${className}:"/${secondModuleName}/delete"
-   getall${className}:"/${secondModuleName}/getall"
-   getpage${className}:"/${secondModuleName}/getpage"
+   add${className}:"/${secondModuleName}/add",
+   edit${className}:"/${secondModuleName}/edit",
+   delete${className}:"/${secondModuleName}/delete",
+   getall${className}:"/${secondModuleName}/getall",
+   getpage${className}:"/${secondModuleName}/getpage",
 
 }
 
