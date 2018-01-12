@@ -92,7 +92,7 @@ public class ${className}Controller {
         page.setCurrent(jsonObject.getInteger("current"));
         page.setCurrent(jsonObject.getInteger("allCount"));
         page.setCurrent(jsonObject.getInteger("size"));
-        Map<String,Object> queryInfos=MapUtil.changeToMap(jsonObject,"id","time")
+        Map<String,Object> queryInfos=MapUtil.changeToMap(jsonObject,"id","time");
         ListRestResponse listRestResponse=new ListRestResponse<>();
         Page<${className}> pageInfo=${secondModuleName}Service.selectPage(page,Condition.create().allEq(queryInfos));
         int count=${secondModuleName}Service.selectCount(Condition.create().allEq(queryInfos));
