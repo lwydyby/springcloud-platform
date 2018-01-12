@@ -123,21 +123,22 @@ var mixin = {
     handleReset() {
       this.$refs.ruleForm.resetFields();
     },
-    handleCreate(flag){
+    handleCreate(){
+
       this.isloading=false;
       this.formData = utils.clone(this.createData);
       this.updateIndex = -1;
       this.formData.formId=-1;
-      flag = true;
+      this.dialogFormVisible = true;
     },
-    handleEdit(flag,index, row) {
+    handleEdit(index, row) {
       let data=utils.clone(this.createData)
-      chartUtil.mergeAttrValue2First(data,row);
+      chartUtil.mergeObjValue2First(data,row);
       this.isloading=false;
       this.formData = data;
       this.updateIndex = index;
       this.formData.formId=1;
-      flag= true;
+      this.dialogFormVisible= true;
     },
     formValidate(){
       this.$refs['form'].validate((valid) => {
@@ -174,7 +175,7 @@ var mixin = {
     },
     deleteSubmit:function(type){
       if(type==1){
-        this.$http.post(URL,utils.getRequestData(this.deleteUrl,{"id":this.deleteObj.id})).then(function (response) {
+        this.$http.post(this.deleteUrl,this.deleteObj.id).then(function (response) {
           let data = response.data;
           // if(this.page.menuId>0){//分页
             this.query();

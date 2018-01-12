@@ -75,6 +75,7 @@
           let data = response.body;
           if(this.page.allCount!==data.count){
             this.page.current=1;
+            this.page.allCount=data.count;
           }
           this.page.items = data.result;
         }, function (response) {

@@ -23,6 +23,13 @@ export const MENUID = {
   saveRolebyId:"/role/saveRolebyId",
   getUserName:"/user/getUserName/",
   editUserRole:"/user/editUserRole",
+  addDemo:"/demo/add",
+  editDemo:"/demo/edit",
+  deleteDemo:"/demo/delete",
+  getallDemo:"/demo/getall",
+  getpageDemo:"/demo/getpage",
+
+
 
 
 }

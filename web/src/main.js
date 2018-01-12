@@ -122,6 +122,13 @@ const router = new VueRouter({
         require(['./components/System/menuManage.vue'], resolve)
       }
     }
+    ,{
+      path: '/System/DemoManage',
+      component: function (resolve) {
+        require(['./components/System/demoManage.vue'], resolve)
+      }
+    },
+
   ]
 })
 
