@@ -88,10 +88,7 @@ public class ${className}Controller {
     @ApiOperation(value ="查询单页${comments}", httpMethod ="POST")
     @RequestMapping(value = "getpage", method = RequestMethod.POST)
     public ListRestResponse getPage${className}(@RequestBody JSONObject jsonObject){
-        Page<${className}> page=new Page();
-        page.setCurrent(jsonObject.getInteger("current"));
-        page.setCurrent(jsonObject.getInteger("allCount"));
-        page.setCurrent(jsonObject.getInteger("size"));
+        Page<${className}> page=new Page(jsonObject.getInteger("current"),jsonObject.getInteger("size"));
         Map<String,Object> queryInfos=MapUtil.changeToMap(jsonObject,"id","time");
         ListRestResponse listRestResponse=new ListRestResponse<>();
         Page<${className}> pageInfo=${secondModuleName}Service.selectPage(page,Condition.create().allEq(queryInfos));
