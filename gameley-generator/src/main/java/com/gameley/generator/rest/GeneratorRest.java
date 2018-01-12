@@ -46,8 +46,10 @@ public class GeneratorRest {
         String[] tableNames = new String[]{};
         String tables = request.getParameter("tables");
         tableNames = JSON.parseArray(tables).toArray(tableNames);
-
-        byte[] data = generatorService.generatorCode(tableNames);
+        String menuid=request.getParameter("menuid");
+        String parentid=request.getParameter("parentid");
+        String path=request.getParameter("path");
+        byte[] data = generatorService.generatorCode(tableNames,menuid,parentid,path);
 
         response.reset();
         response.setHeader("Content-Disposition", "attachment; filename=\"ag-admin-code.zip\"");

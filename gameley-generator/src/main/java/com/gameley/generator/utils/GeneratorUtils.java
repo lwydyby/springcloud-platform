@@ -46,7 +46,7 @@ public class GeneratorUtils {
      * 生成代码
      */
     public static void generatorCode(Map<String, String> table,
-                                     List<Map<String, String>> columns, ZipOutputStream zip) {
+                                     List<Map<String, String>> columns, ZipOutputStream zip,String menuid,String parentid,String path) {
         //配置信息
         Configuration config = getConfig();
 
@@ -113,7 +113,13 @@ public class GeneratorUtils {
         map.put("secondModuleName", toLowerCaseFirstOne(className));
         map.put("enableCache",false);  //不开启二级缓存
         map.put("baseResultMap",true);
-
+        map.put("menuid",menuid);
+        map.put("parentid",parentid);
+        map.put("path",path);
+        if(path!=null&&path.contains("/")){
+            String code=path.substring(path.lastIndexOf("/")+1);
+            map.put("code",code);
+        }
         VelocityContext context = new VelocityContext(map);
 
         //获取模板列表

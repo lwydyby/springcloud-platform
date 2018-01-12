@@ -9,23 +9,23 @@ MENUID={
 }
 
  ,{
-      path: '/System/${className}Manage',
+      path: '${path}',
       component: function (resolve) {
-        require(['./components/${className}Manage.vue'], resolve)
+        require(['./components/${path}'], resolve)
       }
   },
 
 
 SQL:
 insert into base_menu (code,title,menu_id,parent_id,href,icon,type,order_num,description,path)
-	values ('${className}Manage','${comments}',?,?,?,?,'menu',1,'${comments}','/System/${className}Manage');
+	values ('${code}','${comments}','${menuid}','${parentid}','','','menu',1,'${comments}','${path}');
 insert into base_element (code,type,name,uri,menu_id,method,description)
-	values (100?,'button','add${className}','/${secondModuleName}/add','?','post','新增' );
+	values (100?,'button','add${className}','/${secondModuleName}/add','${menuid}','post','新增${comments}' );
 insert into base_element (code,type,name,uri,menu_id,method,description)
-	values (200?,'button','edit${className}','/${secondModuleName}/edit','?','post','编辑' );
+	values (200?,'button','edit${className}','/${secondModuleName}/edit','${menuid}','post','编辑${comments}' );
 insert into base_element (code,type,name,uri,menu_id,method,description)
-	values (300?,'button','delete${className}','/${secondModuleName}/delete','?','post','删除' );
+	values (300?,'button','delete${className}','/${secondModuleName}/delete','${menuid}','post','删除${comments}' );
 insert into base_element (code,type,name,uri,menu_id,method,description)
-	values (400?,'other','getall${className}','/${secondModuleName}/getall','?','post','查询所有' );
+	values (400?,'other','getall${className}','/${secondModuleName}/getall','${menuid}','post','查询所有${comments}' );
 insert into base_element (code,type,name,uri,menu_id,method,description)
-	values (500?,'other','getpage${className}','/${secondModuleName}/getpage','?','post','查询分页' );
+	values (500?,'other','getpage${className}','/${secondModuleName}/getpage','${menuid}','post','查询分页${comments}' );

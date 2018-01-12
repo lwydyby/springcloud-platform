@@ -95,11 +95,15 @@ layui.use(['form', 'layedit', 'laydate'], function () {
     });
     $('#btn_generate').on('click',function(){
         if(generator.select()){
+            let menuid=$("#menuid").val();
+            let parentid=$("#parentid").val()
+            let path=$("#pathUrl").val();
             var tableNames = [];
             for(var i=0;i<generator.currentItems.length;i++){
                 tableNames.push(generator.currentItems[i].tableName);
             }
-            location.href = "/base/generator/code?tables=" + JSON.stringify(tableNames);
+            location.href = "/base/generator/code?tables=" + JSON.stringify(tableNames)+"&menuid="+menuid+"&parentid="+parentid+
+            "&path="+path;
         }
     });
     $('#menu_generate').on('click',function(){
