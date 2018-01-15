@@ -17,14 +17,13 @@ import java.util.Arrays;
 
 @Aspect
 @Component
-@Order(1)
 public class HttpAspect {
 
     private final static Logger logger = LoggerFactory.getLogger(HttpAspect.class);
 
 
     @SuppressWarnings("unchecked")
-    @Pointcut("execution(public * com.gameley.controller.*.*(..))")
+    @Pointcut("execution(public * com.gameley.controller.*.*(..)) && !@annotation(com.gameley.common.DisableGameleyLog))")
     public void log(){
 
     }
