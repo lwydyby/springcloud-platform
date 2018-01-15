@@ -137,4 +137,28 @@
         <!-- 生产环境将请stdout,testfile去掉 -->
         <appender-ref ref="STDOUT" />
     </root>
+
+    <!-- 使用logstash进行存储的配置-->
+    <!--<include resource="org/springframework/boot/logging/logback/base.xml"/>-->
+
+    <!--<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">-->
+        <!--&lt;!&ndash; encoders are  by default assigned the type-->
+             <!--ch.qos.logback.classic.encoder.PatternLayoutEncoder &ndash;&gt;-->
+        <!--<encoder>-->
+            <!--<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+
+    <!--<appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">-->
+        <!--<param name="Encoding" value="UTF-8"/>-->
+        <!--<remoteHost>127.0.0.1</remoteHost>-->
+        <!--<port>4567</port>-->
+        <!--&lt;!&ndash; encoder is required &ndash;&gt;-->
+        <!--<encoder class="net.logstash.logback.encoder.LogstashEncoder" />-->
+    <!--</appender>-->
+
+    <!--<root level="info">-->
+        <!--<appender-ref ref="logstash" />-->
+        <!--<appender-ref ref="STDOUT" />-->
+    <!--</root>-->
 </configuration>
