@@ -13,7 +13,7 @@
 
  **项目介绍**
  
-  参考老A的Ag-admin项目，简化去掉了中间件和限流等功能，加入了Mybatis-Plus
+  参考老A的Ag-admin项目，简化去掉了中间件和限流等功能，加入了Mybatis-Plus，增加aop的统一日志和异常管理，以及使用elementui开发的前端页面
 
  **初步搭建，还在学习修改** 
 
@@ -22,3 +22,8 @@
 ![输入图片说明](https://gitee.com/uploads/images/2018/0104/190311_a2d9b616_1463938.png "深度截图_选择区域_20180104190140.png") 
 
 ![输入图片说明](https://gitee.com/uploads/images/2018/0105/192313_5b896fbe_1463938.png "前端UI.png")
+
+ **前台安装步骤（需要安装node.js）**
+1. cd web
+1. npm install 
+1. npm run dev
