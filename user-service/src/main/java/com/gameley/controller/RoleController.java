@@ -53,7 +53,7 @@ public class RoleController {
     private RoleService roleService;
     @ApiOperation(value = "获取菜单树" ,httpMethod ="POST")
     @RequestMapping("getMenuTree")
-    private List<Tree> getTree(){
+    public List<Tree> getMenuTree(){
         List<Menu> menus=menuService.selectList(Condition.EMPTY);
         List<Model> models=MenuUtils.getmenu(menus);
         List<Tree> trees=new ArrayList<>();
@@ -82,8 +82,6 @@ public class RoleController {
     @ApiOperation(value = "获取权限组信息" ,httpMethod ="POST")
     @RequestMapping("getRoleName")
 	public ObjectRestResponse getRoleName(){
-
-
         List<Role> roles=roleService.selectList(Condition.EMPTY);
         ObjectRestResponse objectRestResponse=new ObjectRestResponse();
         objectRestResponse.setData(roles);
@@ -92,7 +90,7 @@ public class RoleController {
     }
     @ApiOperation(value = "根据id查询权限组" ,httpMethod ="POST")
     @RequestMapping("getRoleById")
-    private ObjectRestResponse getRoleById(@RequestBody JSONObject result){
+    public ObjectRestResponse getRoleById(@RequestBody JSONObject result){
         String roleid= result.getString("roleid");
         ObjectRestResponse objectRestResponse=new ObjectRestResponse();
         List<RoleMenu> roleMenus=roleMenuService.selectList(Condition.create().eq("role_id",roleid));
@@ -102,7 +100,7 @@ public class RoleController {
     }
     @ApiOperation(value = "新建权限组" ,httpMethod ="POST")
     @RequestMapping("addRole")
-    private ObjectRestResponse addRole(@RequestBody JSONObject result){
+    public ObjectRestResponse addRole(@RequestBody JSONObject result){
         ObjectRestResponse objectRestResponse=new ObjectRestResponse();
         Role role=new Role();
         role.setRoleName(result.getString("rolename"));
@@ -118,7 +116,7 @@ public class RoleController {
     }
     @ApiOperation(value = "编辑权限组" ,httpMethod ="POST")
     @RequestMapping("editRole")
-    private BaseResponse editRole(@RequestBody Role role){
+    public BaseResponse editRole(@RequestBody Role role){
         Boolean flag=roleService.updateById(role);
         if(flag){
             return new BaseResponse(200,"编辑成功");
@@ -129,7 +127,7 @@ public class RoleController {
     }
     @ApiOperation(value = "保存权限设置" ,httpMethod ="POST")
     @RequestMapping("saveRolebyId")
-    private BaseResponse saveRoleById(@RequestBody JSONObject jsonObject){
+    public BaseResponse saveRoleById(@RequestBody JSONObject jsonObject){
         Integer roleid=jsonObject.getInteger("roleid");
         List<Integer> menuids= jsonObject.getJSONArray("menuids").toJavaList(Integer.class);
         roleMenuService.delete(Condition.create().eq("role_id",roleid));

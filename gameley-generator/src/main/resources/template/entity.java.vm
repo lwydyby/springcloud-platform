@@ -62,4 +62,11 @@ public class ${className} extends Model<${className}> {
 	protected Serializable pkVal() {
         return this.id;
 	}
+	@Override
+	public String toString() {
+	    return "${className}{"+
+#foreach ($column in $columns)
+	"${column.attrName}="+$column.attrname+
+#end
+		"}";}
 }

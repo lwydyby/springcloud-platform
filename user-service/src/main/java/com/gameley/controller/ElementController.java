@@ -46,7 +46,7 @@ public class ElementController {
     MenuService menuService;
     @ApiOperation(value = "获取按钮权限" ,httpMethod ="POST")
     @RequestMapping("getElementCode")
-    private BaseResponse getElementCode(){
+    public BaseResponse getElementCode(){
         Integer userid= Integer.valueOf(BaseContextHandler.getUserID());
         User user=userService.selectById(userid);
         Integer roleid=user.getRoleid();
@@ -65,7 +65,7 @@ public class ElementController {
     @ApiOperation(value = "获取权限（暂未使用）" ,httpMethod ="POST")
     @RequestMapping("permission")
     @IgnoreUserToken
-    private Integer getpermission(String uri){
+    public Integer getpermission(String uri){
         int count=elementService.selectCount(Condition.create().like("uri",uri));
         int counts=menuService.selectCount(Condition.create().like("href",uri));
         if(count+counts==0){

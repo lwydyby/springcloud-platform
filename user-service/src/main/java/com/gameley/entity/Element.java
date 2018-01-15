@@ -22,7 +22,7 @@ import com.gameley.entity.Element;
  * @date 2018-01-03 14:39:38
  */
 //@Data
-@TableName("base_element")
+@TableName("element")
 public class Element extends Model<Element> {
 	private static final long serialVersionUID=1L;
     //
@@ -381,5 +381,33 @@ public class Element extends Model<Element> {
 	@Override
 	protected Serializable pkVal() {
         return this.id;
+	}
+
+	@Override
+	public String toString() {
+		return "Element{" +
+				"id=" + id +
+				", code='" + code + '\'' +
+				", type='" + type + '\'' +
+				", name='" + name + '\'' +
+				", uri='" + uri + '\'' +
+				", menuId='" + menuId + '\'' +
+				", parentId='" + parentId + '\'' +
+				", path='" + path + '\'' +
+				", method='" + method + '\'' +
+				", description='" + description + '\'' +
+				", crtTime=" + crtTime +
+				", crtUser='" + crtUser + '\'' +
+				", crtName='" + crtName + '\'' +
+				", crtHost='" + crtHost + '\'' +
+				", attr1='" + attr1 + '\'' +
+				", attr2='" + attr2 + '\'' +
+				", attr3='" + attr3 + '\'' +
+				", attr4='" + attr4 + '\'' +
+				", attr5='" + attr5 + '\'' +
+				", attr6='" + attr6 + '\'' +
+				", attr7='" + attr7 + '\'' +
+				", attr8='" + attr8 + '\'' +
+				'}';
 	}
 }

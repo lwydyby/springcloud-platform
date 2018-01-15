@@ -68,7 +68,7 @@ public class UserController {
     }
     @ApiOperation(value = "编辑用户权限" ,httpMethod ="POST")
     @RequestMapping("editUserRole")
-    private BaseResponse editUserRole(@RequestBody JSONObject jsonObject){
+    public BaseResponse editUserRole(@RequestBody JSONObject jsonObject){
         User user=new User();
         user.setId(jsonObject.getInteger("id"));
         user.setRoleid(jsonObject.getInteger("roleid"));

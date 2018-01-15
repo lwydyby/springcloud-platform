@@ -33,7 +33,7 @@
             <result property="attr8" column="attr8"/>
 	</resultMap>
     <delete id="deleteall">
-        DELETE FROM base_menu
+        DELETE FROM menu
     </delete>
 
 

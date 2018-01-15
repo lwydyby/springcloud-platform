@@ -3,6 +3,8 @@ package com.gameley.dao;
 import com.gameley.entity.Menu;
 import com.gameley.common.mapper.SuperMapper;
 
+import java.util.List;
+
 /**
  *
  * 
@@ -12,5 +14,4 @@ import com.gameley.common.mapper.SuperMapper;
  * @date 2018-01-03 14:39:38
  */
 public interface MenuDao extends SuperMapper<Menu> {
-
 }

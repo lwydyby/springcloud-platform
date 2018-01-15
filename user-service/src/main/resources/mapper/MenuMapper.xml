@@ -33,6 +33,8 @@
             <result property="attr7" column="attr7"/>
             <result property="attr8" column="attr8"/>
 	</resultMap>
-
+    <select id="getAll" resultMap="BaseResultMap">
+        SELECT * FROM menu;
+    </select>
 
 </mapper>

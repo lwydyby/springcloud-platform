@@ -23,7 +23,7 @@ import com.baomidou.mybatisplus.activerecord.Model;
  * @date 2018-01-03 14:39:38
  */
 //@Data
-@TableName("base_menu")
+@TableName("menu")
 public class Menu extends Model<Menu> {
 	private static final long serialVersionUID=1L;
     //

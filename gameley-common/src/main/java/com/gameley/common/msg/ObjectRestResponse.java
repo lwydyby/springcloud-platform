@@ -35,5 +35,11 @@ public class ObjectRestResponse<T> extends BaseResponse {
         this.data = data;
     }
 
-
+    @Override
+    public String toString() {
+        return "ObjectRestResponse{" +
+                "data=" + data +
+                ", rel=" + rel +
+                '}';
+    }
 }

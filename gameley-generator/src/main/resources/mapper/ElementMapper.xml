@@ -28,7 +28,7 @@
             <result property="attr8" column="attr8"/>
 	</resultMap>
     <delete id="deleteAll">
-        DELETE FROM base_element
+        DELETE FROM element
     </delete>
 
 
