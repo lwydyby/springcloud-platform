@@ -154,7 +154,6 @@
 
         }, function (response) {
 
-          this.setMsg(ERR_MSG);
         });
         this.$http.post(URL+MENUID.getrolename).then(function (response) {
 
@@ -166,7 +165,6 @@
 
         }, function (response) {
 
-          this.setMsg(ERR_MSG);
         });
 
 
@@ -189,7 +187,6 @@
             this.dialogFormVisible2=false
           }, function (response) {
 
-            this.setMsg(ERR_MSG);
           });
 
         },
@@ -228,7 +225,6 @@
 
           }, function (response) {
 
-            this.setMsg(ERR_MSG);
           });
 
 
@@ -299,8 +295,6 @@
             this.roleid=index;
 
           }, function (response) {
-
-            this.setMsg(ERR_MSG);
           });
         },
         editname(item){
@@ -354,7 +348,6 @@
 
             }, function (response) {
 
-              this.setMsg(ERR_MSG);
             });
             this.$message({
               type: 'success',
@@ -384,7 +377,6 @@
 
             }, function (response) {
 
-              this.setMsg(ERR_MSG);
             });
             this.$message({
               type: 'success',
@@ -417,7 +409,6 @@
 
             }, function (response) {
 
-              this.setMsg(ERR_MSG);
             });
 
           }).catch(() => {
@@ -444,7 +435,7 @@
 
             }, function (response) {
 
-              this.setMsg(ERR_MSG);
+
             });
             this.$message({
               type: 'success',
