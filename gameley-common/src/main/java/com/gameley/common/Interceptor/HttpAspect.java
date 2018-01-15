@@ -1,13 +1,11 @@
-package com.gameley.filter;
+package com.gameley.common.Interceptor;
 
 import com.gameley.common.exception.BaseException;
-import com.gameley.common.msg.BaseResponse;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;

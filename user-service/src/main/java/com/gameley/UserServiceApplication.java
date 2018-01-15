@@ -1,6 +1,7 @@
 package com.gameley;
 
 
+import com.gameley.common.EnableGameleyLog;
 import com.gameley.gameleyauth.EnableGameleyAuthClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,7 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 @EnableFeignClients
 @EnableGameleyAuthClient
 @ServletComponentScan("com.gameley.config.druid")
+@EnableGameleyLog
 public class UserServiceApplication {
 
 	public static void main(String[] args) {
