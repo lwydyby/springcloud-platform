@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.Condition;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.gameley.common.DisableGameleyLog;
 import com.gameley.common.constant.RestCodeConstants;
 import com.gameley.common.msg.BaseResponse;
 import com.gameley.common.msg.ListRestResponse;
@@ -52,6 +53,7 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
     @ApiOperation(value = "获取菜单树" ,httpMethod ="POST")
+    @DisableGameleyLog
     @RequestMapping("getMenuTree")
     public List<Tree> getMenuTree(){
         List<Menu> menus=menuService.selectList(Condition.EMPTY);
